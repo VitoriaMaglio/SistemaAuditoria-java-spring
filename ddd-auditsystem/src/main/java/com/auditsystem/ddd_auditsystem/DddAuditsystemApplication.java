@@ -1,13 +1,13 @@
-package com.auditsystem.demo;
+package com.auditsystem.ddd_auditsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AuditsystemApplication {
+public class DddAuditsystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuditsystemApplication.class, args);
+		SpringApplication.run(DddAuditsystemApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.auditsystem.demo;
+package com.auditsystem.ddd_auditsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuditsystemApplicationTests {
+class DddAuditsystemApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.auditsystem</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>ddd-auditsystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>auditsystem</name>
+	<name>ddd-auditsystem</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
