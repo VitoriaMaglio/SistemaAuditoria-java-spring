@@ -49,8 +49,63 @@ public class Alert {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public Alert() {
+    }
 
+    public Alert(Long id, String description, String entityName, Long entityId, Instant createdAt, User user) {
+        this.id = id;
+        this.description = description;
+        this.entityName = entityName;
+        this.entityId = entityId;
+        this.createdAt = createdAt;
+        this.user = user;
+    }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
+    }
+
+    public Long getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(Long entityId) {
+        this.entityId = entityId;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -54,4 +54,73 @@ public class VersionedEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public VersionedEntity() {
+    }
+
+    public VersionedEntity(Long id, String entityName, Long entityId, Integer version, String dataSnapshot, Instant createdAt, User user) {
+        this.id = id;
+        this.entityName = entityName;
+        this.entityId = entityId;
+        this.version = version;
+        this.dataSnapshot = dataSnapshot;
+        this.createdAt = createdAt;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
+    }
+
+    public Long getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(Long entityId) {
+        this.entityId = entityId;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public String getDataSnapshot() {
+        return dataSnapshot;
+    }
+
+    public void setDataSnapshot(String dataSnapshot) {
+        this.dataSnapshot = dataSnapshot;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
