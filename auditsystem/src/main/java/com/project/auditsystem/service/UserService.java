@@ -43,4 +43,36 @@ public class UserService {
 
     }
 
+    //Método para get user por id
+    public UserResponseDTO getUserById(Long id){
+        User user = userRepository.findByIdAndActiveTrue(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        return UserMapper.toUserResponseDto(user);
+    }
+
+    //Método para atualizar dados de um user
+    public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        if (!user.getActive()){
+            throw new RuntimeException("Usuário inativo não pode ser alterado");
+        }
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        User updatedUser = userRepository.save(user);
+        return UserMapper.toUserResponseDto(updatedUser);
+
+    }
+
+    public void deleteUser(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        if (!user.getActive()){
+            throw new RuntimeException("Usuário já está inativo.");
+        }
+        user.setActive(false);
+        userRepository.save(user);
+
+    }
+
 }

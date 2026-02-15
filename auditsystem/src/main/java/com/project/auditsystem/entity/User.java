@@ -55,16 +55,21 @@ public class User {
     @Column(name = "password_hash", length = 255, nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private Boolean active = true;
+
+
     public User() {
     }
 
-    public User(Long id, String name, String email, Instant createdAt, List<Transaction> transactions, String password) {
+    public User(Long id, String name, String email, Instant createdAt, List<Transaction> transactions, String password, Boolean active) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.createdAt = createdAt;
         this.transactions = transactions;
         this.password = password;
+        this.active = active;
     }
 
     public Long getId() {
@@ -113,6 +118,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
 
