@@ -11,7 +11,9 @@ import java.time.Instant;
 @Entity
 @Table(name = "transactions")
 public class Transaction {
-
+//BANCO DE DADOS
+// created_at precisão temporal com UTC, default current_timestamp é que se nenhum valor for preenchido nessa coluna, o banco preenche com a data e hora atual.
+//user_id relacionamento fk : declara a regra e nomeia a colunafk, declara a coluna com a fk, referencia a coluna e sua pk e define que nenhum usuário pode ser apagado se tiver transações associadas.
     /**
      * Identificador único de transação.
      * Sequência gerade automaticamente pelo banco de dados.
