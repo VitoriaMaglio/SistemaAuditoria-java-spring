@@ -11,7 +11,7 @@ public class AuditLog {
 //BANCO DE DADOS
 //id identificador único gerado pelo banco
 //entity_name nome da entidade que sofreu uma ação
-//Text registra o estado dos dados sem limite prático, pois pode alterar um campo ou cinco campos
+//Text armazena textos longos registra o estado dos dados sem limite prático, pois pode alterar um campo ou cinco campos
 //created_at precisão do tempo em UTC
 //user_id indica quem fez a ação
 //fk primeiro declara a coluna, o tipo e not null, aplica a regra e nomeia a colunafk, indica a coluna da outra tabela do relacionamento, e faz referência para a outra tabela e sua pk.
