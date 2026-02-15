@@ -14,7 +14,7 @@ public class Transaction {
 
     /**
      * Identificador único de transação.
-     * Sequence gerade automaticamente pelo banco de dados.
+     * Sequência gerade automaticamente pelo banco de dados.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

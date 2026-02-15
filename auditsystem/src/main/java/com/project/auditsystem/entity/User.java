@@ -14,7 +14,7 @@ public class User {
 
     /**
      * Identificador único de usuário.
-     * Sequence gerade automaticamente pelo banco de dados.
+     * Sequência gerade automaticamente pelo banco de dados.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
