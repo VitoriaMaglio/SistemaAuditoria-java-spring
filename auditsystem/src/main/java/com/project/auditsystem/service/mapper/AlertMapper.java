@@ -1,9 +1,7 @@
-package com.project.auditsystem.service;
+package com.project.auditsystem.service.mapper;
 
 import com.project.auditsystem.dto.response.AlertResponseDTO;
-import com.project.auditsystem.dto.response.AuditLogResponseDTO;
 import com.project.auditsystem.entity.Alert;
-import com.project.auditsystem.entity.AuditLog;
 
 public class AlertMapper {
 

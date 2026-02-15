@@ -1,8 +1,6 @@
-package com.project.auditsystem.service;
+package com.project.auditsystem.service.mapper;
 
-import com.project.auditsystem.dto.response.AuditLogResponseDTO;
 import com.project.auditsystem.dto.response.VersionedEntityResponseDTO;
-import com.project.auditsystem.entity.AuditLog;
 import com.project.auditsystem.entity.VersionedEntity;
 
 public class VersionedEntityMapper {

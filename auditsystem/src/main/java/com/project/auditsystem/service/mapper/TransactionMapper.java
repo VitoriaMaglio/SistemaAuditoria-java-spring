@@ -1,4 +1,4 @@
-package com.project.auditsystem.service;
+package com.project.auditsystem.service.mapper;
 
 import com.project.auditsystem.dto.request.TransactionRequestDTO;
 import com.project.auditsystem.dto.response.TransactionResponseDTO;
