@@ -34,7 +34,7 @@ public class Alert {
      * Representa o identificador único da entidade que sofreu a ação auditada.
      */
     @Column(name = "entity_id", nullable = false)
-    private BigInteger entityId;
+    private Long entityId;
 
     /**
      * Representa a data/hora em UTC em que o alerta foi registrado no sistema.
@@ -48,6 +48,8 @@ public class Alert {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+
 
 
 

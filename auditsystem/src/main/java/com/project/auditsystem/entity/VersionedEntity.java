@@ -3,6 +3,7 @@ package com.project.auditsystem.entity;
 import jakarta.persistence.*;
 
 import java.math.BigInteger;
+import java.time.Instant;
 
 /**
  * Classe que guarda versões dos dados do sistema.
@@ -30,7 +31,7 @@ public class VersionedEntity {
      * Representa o identificador único da entidade que sofreu a ação auditada.
      */
     @Column(name = "entity_id", nullable = false)
-    private BigInteger entityId;
+    private Long entityId;
     /**
      * Representa a versão em que o dado está registrado no sistema.
      */
@@ -41,6 +42,13 @@ public class VersionedEntity {
      */
     @Column(name = "data_snapshot", columnDefinition = "jsonb", nullable = false)
     private String dataSnapshot;
+
+    /**
+     * Representa a data/hora em UTC em que a entidade foi versionada.
+     */
+
+    @Column(name = "created_at" , nullable = false, updatable = false)
+    private Instant createdAt;
 
     //Usuário responsável pela ação, lado forte com fk, "user_id" referencia a coluna da tbl user com pk
     @ManyToOne

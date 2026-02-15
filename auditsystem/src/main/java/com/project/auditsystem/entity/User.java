@@ -49,6 +49,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Transaction> transactions = new ArrayList<>();
 
+    /**
+     * Representa a senha do usuário em hash(criptografia)
+     */
+    @Column(name = "password_hash", length = 255, nullable = false)
+    private String password;
+
 
     }
 

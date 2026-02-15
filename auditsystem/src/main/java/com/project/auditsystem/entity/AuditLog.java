@@ -39,7 +39,7 @@ public class AuditLog {
      * Representa o identificador único da entidade que sofreu a ação auditada.
      */
     @Column(name = "entity_id", nullable = false)
-    private BigInteger entityId;
+    private Long entityId;
 
     /**
      * Representa o estado antigo da ação.
