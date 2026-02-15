@@ -16,7 +16,7 @@ public class Transaction {
 //user_id relacionamento fk : declara a regra e nomeia a colunafk, declara a coluna com a fk, referencia a coluna e sua pk e define que nenhum usuário pode ser apagado se tiver transações associadas.
     /**
      * Identificador único de transação.
-     * Sequência gerade automaticamente pelo banco de dados.
+     * Sequência gerada automaticamente pelo banco de dados.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Transaction {
     private BigDecimal amount;
 
     /**
-     * Representa a data/hora em UTC em que a transação foi registrada no sistema..
+     * Representa a data/hora em UTC em que a transação foi registrada no sistema.
      */
     //Quando o atributo não tiver o mesmo nome da coluna na tabela, mapear com o nome da tabela
     @Column(name = "created_at" , nullable = false, updatable = false)

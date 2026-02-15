@@ -17,8 +17,8 @@ public class AuditLog {
 //fk primeiro declara a coluna, o tipo e not null, aplica a regra e nomeia a colunafk, indica a coluna da outra tabela do relacionamento, e faz referência para a outra tabela e sua pk.
 
     /**
-     * Identificador único de transação.
-     * Sequence gerade automaticamente pelo banco de dados.
+     * Identificador único de auditlog.
+     * Sequência gerada automaticamente pelo banco de dados.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +54,7 @@ public class AuditLog {
     private String newValue;
 
     /**
-     * Representa a data/hora em UTC em que a açãoo foi registrada no sistema..
+     * Representa a data/hora em UTC em que a ação foi registrada no sistema.
      */
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
