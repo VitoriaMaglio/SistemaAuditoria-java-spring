@@ -1,28 +1,28 @@
 package com.project.auditsystem.service;
-
 import com.project.auditsystem.dto.request.TransactionRequestDTO;
 import com.project.auditsystem.dto.response.TransactionResponseDTO;
-import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.Transaction;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.TransactionRepository;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.TransactionMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionService {
-    @Autowired
-    private TransactionRepository transactionRepository;
-    @Autowired
-    private UserRepository userRepository;
-    private AuditLogService auditLogService;
-    private AlertService alertService;
-    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository) {
+
+    private final TransactionRepository transactionRepository;
+    private final UserRepository userRepository;
+    private final AuditLogService auditLogService;
+    private final AlertService alertService;
+
+    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, AuditLogService auditLogService, AlertService alertService) {
         this.transactionRepository = transactionRepository;
         this.userRepository = userRepository;
+        this.auditLogService = auditLogService;
+        this.alertService = alertService;
     }
+
     //CreateTransaction validar se existe user por email e se user está ativo
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionRequestDTO, String email){
         User user = userRepository.findByEmailAndActiveTrue(email)

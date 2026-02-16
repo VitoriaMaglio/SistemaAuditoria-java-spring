@@ -4,7 +4,6 @@ import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,11 +14,15 @@ public class UserService {
     /**
      * Injeção de dependência para a camada repository de acesso ao banco.
      */
-    @Autowired
-    private UserRepository userRepository;
 
-    private AuditLogService auditLogService;
-    public UserService(UserRepository userRepository) {this.userRepository = userRepository;}
+    private final UserRepository userRepository;
+    private final AuditLogService auditLogService;
+
+    public UserService(UserRepository userRepository, AuditLogService auditLogService) {
+        this.userRepository = userRepository;
+        this.auditLogService = auditLogService;
+    }
+
     //Método para cadastro de um usuário no sistema
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO){
         //lógica cadastro-> só cadastrar user se email nunca tiver sido registrado
