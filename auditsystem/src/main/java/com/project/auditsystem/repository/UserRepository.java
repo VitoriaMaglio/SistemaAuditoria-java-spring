@@ -22,6 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //Soft delete
 
     Optional<User> findByIdAndActiveTrue(Long id);
+    Optional<User> findByEmailAndActiveTrue(String email);
 
     //Não estou fazendo getAllUsers pois para isso é necesário ser funcionário,admin do sistema -> Melhorar lógica
 
