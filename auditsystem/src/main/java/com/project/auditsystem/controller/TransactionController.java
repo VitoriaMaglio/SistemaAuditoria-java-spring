@@ -11,7 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+/**
+ * Controller responsável por expor os endpoints REST
+ * relacionados ao gerenciamento de transações do sistema.
+ */
+@RestController
+@RequestMapping("/transactions")
 public class TransactionController {
     @Autowired
     private TransactionService transactionService;

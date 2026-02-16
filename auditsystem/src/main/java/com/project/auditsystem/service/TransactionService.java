@@ -8,36 +8,33 @@ import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.TransactionRepository;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.TransactionMapper;
-import com.project.auditsystem.service.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionService {
-
     @Autowired
     private TransactionRepository transactionRepository;
     @Autowired
     private UserRepository userRepository;
-
+    private AuditLogService auditLogService;
+    private AlertService alertService;
     public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository) {
         this.transactionRepository = transactionRepository;
         this.userRepository = userRepository;
     }
-
     //CreateTransaction validar se existe user por email e se user está ativo
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionRequestDTO, String email){
         User user = userRepository.findByEmailAndActiveTrue(email)
                 .orElseThrow(()-> new RuntimeException("Usuário não existe ou está inativo."));
         Transaction transaction = TransactionMapper.toTransactionEntity(transactionRequestDTO);
         transaction.setUser(user);//IMPORTANTE -> atribuindo a transação ao user por conta do relacionamento
+        auditLogService.logAction("CREATED", "Transaction", transaction.getId(), null, "Transação criada", user);
         Transaction transactionSaved = transactionRepository.save(transaction);
+        alertService.createAlert(user, transactionSaved);
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }
-
     //Relacionamentos só são definidos em métodos de create ou update, nunca em get
-
     //Buscar uma transação -> verificar se existe um user ativo relacionado a esa ação
     //Valido, realizar a busca da transação por id
     public TransactionResponseDTO getTransactionById (Long id, String email){

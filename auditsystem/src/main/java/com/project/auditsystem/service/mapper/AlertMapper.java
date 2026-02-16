@@ -11,9 +11,10 @@ public class AlertMapper {
         AlertResponseDTO alertResponseDTO = new AlertResponseDTO();
         alertResponseDTO.setId(alert.getId());
         alertResponseDTO.setDescription(alert.getDescription());
+        alertResponseDTO.setCreated_at(alert.getCreatedAt());
         alertResponseDTO.setEntityName(alert.getEntityName());
         alertResponseDTO.setEntityId(alert.getEntityId());
-        alertResponseDTO.setCreatedAt(alert.getCreatedAt());
+
         alertResponseDTO.setUserName(alert.getUser().getName());
         return alertResponseDTO;
     }

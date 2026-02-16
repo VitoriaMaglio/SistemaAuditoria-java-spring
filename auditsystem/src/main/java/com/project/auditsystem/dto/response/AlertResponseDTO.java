@@ -12,7 +12,7 @@ public class AlertResponseDTO {
     private Instant created_at;
     private String entityName;
     private Long entityId;
-    private Instant createdAt;
+
     private String userName;
 
     public Long getId() {
@@ -55,13 +55,6 @@ public class AlertResponseDTO {
         this.entityId = entityId;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public String getUserName() {
         return userName;

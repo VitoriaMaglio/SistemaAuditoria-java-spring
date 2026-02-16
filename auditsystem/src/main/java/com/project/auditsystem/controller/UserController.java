@@ -10,7 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+/**
+ * Controller responsável por expor os endpoints REST
+ * relacionados ao gerenciamento de usuários do sistema.
+ */
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
