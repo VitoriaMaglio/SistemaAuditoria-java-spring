@@ -28,7 +28,7 @@ public class TransactionController {
     //Método para cadastro de uma transação
     @PostMapping
     public ResponseEntity<TransactionResponseDTO> createTransaction(@RequestBody TransactionRequestDTO transactionRequestDTO){
-        String emailUserLogado = "usuarioAutenticadoexemplo@gmail.com";//depois vem da autenticação jwt
+        String emailUserLogado = "vitoria.maglio@email.com";//depois vem da autenticação jwt
         TransactionResponseDTO transactionResponseDTO = transactionService.createTransaction(transactionRequestDTO, emailUserLogado);
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.createTransaction(transactionRequestDTO, emailUserLogado));
     }

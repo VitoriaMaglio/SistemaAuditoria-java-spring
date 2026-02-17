@@ -39,7 +39,7 @@ public class Alert {
     /**
      * Representa a data/hora em UTC em que o alerta foi registrado no sistema.
      */
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
     private Instant createdAt;
 
     /**

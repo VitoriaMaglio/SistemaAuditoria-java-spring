@@ -47,7 +47,7 @@ public class VersionedEntity {
      * Representa a data/hora em UTC em que a entidade foi versionada.
      */
 
-    @Column(name = "created_at" , nullable = false, updatable = false)
+    @Column(name = "created_at" , nullable = false, updatable = false,insertable = false)
     private Instant createdAt;
 
     //Usuário responsável pela ação, lado forte com fk, "user_id" referencia a coluna da tbl user com pk

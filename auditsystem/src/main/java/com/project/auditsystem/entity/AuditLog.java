@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.time.Instant;
 
 @Entity
-@Table(name = "auditLogs")
+@Table(name = "auditlogs")
 public class AuditLog {
 //BANCO DE DADOS
 //id identificador único gerado pelo banco
@@ -56,7 +56,7 @@ public class AuditLog {
     /**
      * Representa a data/hora em UTC em que a ação foi registrada no sistema.
      */
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
     private Instant createdAt;
 
     /**

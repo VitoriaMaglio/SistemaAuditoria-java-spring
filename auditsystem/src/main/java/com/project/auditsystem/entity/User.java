@@ -37,7 +37,7 @@ public class User {
     /**
      * Representa a data/hora em UTC em que o usuário foi registrado no sistema.
      */
-    @Column(name = "created_at", nullable = false, updatable = false )
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false )
     private Instant createdAt;
 
     /**

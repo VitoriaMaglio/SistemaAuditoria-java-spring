@@ -38,7 +38,7 @@ public class Transaction {
      * Representa a data/hora em UTC em que a transação foi registrada no sistema.
      */
     //Quando o atributo não tiver o mesmo nome da coluna na tabela, mapear com o nome da tabela
-    @Column(name = "created_at" , nullable = false, updatable = false)
+    @Column(name = "created_at" , nullable = false, updatable = false, insertable = false)
     private Instant createdAt;
 
     /**

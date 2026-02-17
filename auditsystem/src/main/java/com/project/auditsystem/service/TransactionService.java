@@ -29,9 +29,10 @@ public class TransactionService {
                 .orElseThrow(()-> new RuntimeException("Usuário não existe ou está inativo."));
         Transaction transaction = TransactionMapper.toTransactionEntity(transactionRequestDTO);
         transaction.setUser(user);//IMPORTANTE -> atribuindo a transação ao user por conta do relacionamento
-        auditLogService.logAction("CREATED", "Transaction", transaction.getId(), null, "Transação criada", user);
+
         Transaction transactionSaved = transactionRepository.save(transaction);
         alertService.createAlert(user, transactionSaved);
+        auditLogService.logAction("CREATED", "Transaction", transaction.getId(), null, "Transação criada", user);
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }
     //Relacionamentos só são definidos em métodos de create ou update, nunca em get
