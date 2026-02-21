@@ -2,6 +2,7 @@ package com.project.auditsystem.service;
 import com.project.auditsystem.dto.request.UserRequestDTO;
 import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
+import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
@@ -51,13 +52,13 @@ public class UserService {
     //Método para get user por id
     public UserResponseDTO getUserById(Long id){
         User user = userRepository.findByIdAndActiveTrue(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+                .orElseThrow(UserNotFoundException::new);
         return UserMapper.toUserResponseDto(user);
     }
     //Método para atualizar dados de um user
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+                .orElseThrow(UserNotFoundException::new);
         if (!user.getActive()){
             throw new RuntimeException("Usuário inativo não pode ser alterado");
         }
@@ -85,7 +86,7 @@ public class UserService {
     }
     public void deleteUser(Long id){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+                .orElseThrow(UserNotFoundException::new);
         if (!user.getActive()){
             throw new RuntimeException("Usuário já está inativo.");
         }

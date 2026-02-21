@@ -3,6 +3,7 @@ import com.project.auditsystem.dto.request.TransactionRequestDTO;
 import com.project.auditsystem.dto.response.TransactionResponseDTO;
 import com.project.auditsystem.entity.Transaction;
 import com.project.auditsystem.entity.User;
+import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.TransactionRepository;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.TransactionMapper;
@@ -44,7 +45,7 @@ public class TransactionService {
     //Valido, realizar a busca da transação por id
     public TransactionResponseDTO getTransactionById (Long id, String email){
         User user = userRepository.findByEmailAndActiveTrue(email)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+                .orElseThrow(UserNotFoundException::new);
         //adicionar lógica para se o usuário for inativo
         Transaction transaction = transactionRepository.findByIdAndUserEmail(id, email)
                 .orElseThrow(() -> new RuntimeException("Transação não encontrada."));
