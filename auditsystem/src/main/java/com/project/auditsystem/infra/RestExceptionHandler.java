@@ -1,6 +1,7 @@
 package com.project.auditsystem.infra;
 
 import com.project.auditsystem.exception.RegisteredEmailException;
+import com.project.auditsystem.exception.TransactionNotFoundException;
 import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private ResponseEntity<RestErrorMessage> RegisteredEmailException(RegisteredEmailException registeredEmailException){
         RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,registeredEmailException.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(threatResponse);
+    }
+    private ResponseEntity<RestErrorMessage> TransactionNotFoundException(TransactionNotFoundException transactionNotFoundException){
+        RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,transactionNotFoundException.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(threatResponse);
     }
 }
