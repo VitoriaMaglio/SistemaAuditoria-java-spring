@@ -4,6 +4,9 @@ import com.project.auditsystem.dto.request.UserRequestDTO;
 import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
 
+import java.io.Serializable;
+import java.util.Map;
+
 public class UserMapper {
 
     //Método que converte request para entidade
@@ -29,6 +32,8 @@ public class UserMapper {
         userResponseDTO.setCreated_at(user.getCreatedAt());
         return userResponseDTO;
     }
+
+
 
     //RequestDTO -> Entidade
     //o que entrar precisa ser dto para passar entre as camadas da aplicação

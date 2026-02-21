@@ -39,7 +39,7 @@ public class UserController {
     }
 
     //Método para buscar um user pelo id
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id){
         UserResponseDTO userResponseDTO = userService.getUserById(id);
         return ResponseEntity.ok(userResponseDTO);
