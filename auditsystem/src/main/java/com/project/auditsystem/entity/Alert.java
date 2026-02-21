@@ -1,9 +1,6 @@
 package com.project.auditsystem.entity;
 
 import jakarta.persistence.*;
-import org.yaml.snakeyaml.events.Event;
-
-import java.math.BigInteger;
 import java.time.Instant;
 
 /**

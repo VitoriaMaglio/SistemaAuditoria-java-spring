@@ -1,14 +1,12 @@
 package com.project.auditsystem.controller;
 
 import com.project.auditsystem.dto.request.TransactionRequestDTO;
-import com.project.auditsystem.dto.request.UserRequestDTO;
+
 import com.project.auditsystem.dto.response.TransactionResponseDTO;
 import com.project.auditsystem.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**

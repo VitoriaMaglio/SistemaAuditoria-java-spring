@@ -1,8 +1,6 @@
 package com.project.auditsystem.entity;
 
 import jakarta.persistence.*;
-
-import java.math.BigInteger;
 import java.time.Instant;
 
 @Entity

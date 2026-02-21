@@ -1,6 +1,5 @@
 package com.project.auditsystem.controller;
 
-import com.project.auditsystem.dto.response.AlertResponseDTO;
 import com.project.auditsystem.entity.Alert;
 import com.project.auditsystem.service.AlertService;
 import org.springframework.http.ResponseEntity;

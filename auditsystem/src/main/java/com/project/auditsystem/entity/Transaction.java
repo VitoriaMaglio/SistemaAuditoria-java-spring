@@ -1,7 +1,6 @@
 package com.project.auditsystem.entity;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 
