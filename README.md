@@ -39,6 +39,8 @@ O projeto segue uma arquitetura em camadas:
 controller  →  service  →  repository  →  database
                 ↓
             audit / alert
+
+
 📦 Principais Camadas
 
 Controller: expõe endpoints REST
