@@ -6,6 +6,7 @@ import com.project.auditsystem.exception.RegisteredEmailException;
 import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.UserRepository;
+import com.project.auditsystem.repository.VersionedEntityRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,15 @@ public class UserService {
     private final AlertService alertService;
     private final VersionedEntityService versionedEntityService;
     private final UserSnapshotBuilder userSnapshotBuilder;
+    private final VersionedEntityRepository versionedEntityRepository;
 
-    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder) {
+    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder, VersionedEntityRepository versionedEntityRepository) {
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
         this.alertService = alertService;
         this.versionedEntityService = versionedEntityService;
         this.userSnapshotBuilder = userSnapshotBuilder;
+        this.versionedEntityRepository = versionedEntityRepository;
     }
 
     //Método para cadastro de um usuário no sistema
@@ -69,10 +72,17 @@ public class UserService {
             throw new UserInactiveException();
         }
         String snapshot = userSnapshotBuilder.build(user);
+        Integer nextVersion = versionedEntityRepository
+                .findTopByEntityNameAndEntityIdOrderByVersionDesc("User", user.getId())
+                .map(v -> v.getVersion() + 1)
+                .orElse(1);
+
         versionedEntityService.createVersion(
                 "User",
                 user.getId(),
-                snapshot
+                nextVersion,
+                snapshot,
+                user
         );
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());

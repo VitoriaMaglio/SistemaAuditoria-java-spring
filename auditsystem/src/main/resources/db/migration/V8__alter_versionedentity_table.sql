@@ -1,0 +1,2 @@
+ALTER TABLE versionedentities
+ADD COLUMN version INTEGER NOT NULL DEFAULT 1;

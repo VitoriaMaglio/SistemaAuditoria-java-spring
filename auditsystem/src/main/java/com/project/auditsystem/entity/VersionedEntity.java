@@ -1,7 +1,6 @@
 package com.project.auditsystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,6 +41,7 @@ public class VersionedEntity {
      * Representa a versão em que o dado está registrado no sistema.
      */
     @Column(nullable = false)
+    @Version
     private Integer version;
     /**
      * Representa o estao completo da entidade no sistema.
@@ -62,4 +62,6 @@ public class VersionedEntity {
     private User user;
 
 
+    public void setUser(User id) {
+    }
 }
