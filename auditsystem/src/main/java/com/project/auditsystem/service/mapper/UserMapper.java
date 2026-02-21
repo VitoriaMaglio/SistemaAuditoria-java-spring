@@ -30,6 +30,7 @@ public class UserMapper {
         userResponseDTO.setName(user.getName());
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setCreated_at(user.getCreatedAt());
+        userResponseDTO.setActive(user.getActive());
         return userResponseDTO;
     }
 

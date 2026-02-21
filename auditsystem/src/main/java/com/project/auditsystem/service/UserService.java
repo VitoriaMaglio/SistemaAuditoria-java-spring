@@ -3,16 +3,12 @@ import com.project.auditsystem.dto.request.UserRequestDTO;
 import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.exception.RegisteredEmailException;
-import com.project.auditsystem.exception.RegisteredEmailException;
-import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.stereotype.Service;
-
-import javax.naming.ldap.PagedResultsControl;
 
 /**
  * Classe que contém lógica de negócio de um usuário do sistema.
@@ -55,13 +51,21 @@ public class UserService {
     }
     //Método para get user por id
     public UserResponseDTO getUserById(Long id){
-        User user = userRepository.findByIdAndActiveTrue(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
+        return UserMapper.toUserResponseDto(user);
+    }
+    public UserResponseDTO inactivateUser(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(UserNotFoundException::new);
+
+        user.setActive(false);
+        userRepository.save(user);
         return UserMapper.toUserResponseDto(user);
     }
     //Método para atualizar dados de um user
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
-        User user = userRepository.findById(id)
+        User user = userRepository.findByIdAndActiveTrue(id)
                 .orElseThrow(UserNotFoundException::new);
         if (!user.getActive()){
             throw new UserInactiveException();
@@ -77,6 +81,7 @@ public class UserService {
 
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
+
         User updatedUser = userRepository.save(user);
         auditLogService.logAction(
                 "UPDATED",

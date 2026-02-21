@@ -45,11 +45,17 @@ public class UserController {
         return ResponseEntity.ok(userResponseDTO);
     }
 
+    @PatchMapping("/{id}/inactivate")
+    public ResponseEntity<UserResponseDTO> inactivateUser(@PathVariable Long id) {
+        UserResponseDTO userResponseDTO = userService.inactivateUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UserRequestDTO dto){
         UserResponseDTO userResponseDTO = userService.updateUser(id,dto);
-        return
-                ResponseEntity.ok(userResponseDTO);
+        return ResponseEntity.ok(userResponseDTO);
     }
 
     //Soft delete

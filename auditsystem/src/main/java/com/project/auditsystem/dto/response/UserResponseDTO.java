@@ -11,6 +11,7 @@ public class UserResponseDTO {
     private String name;
     private String email;
     private Instant created_at;
+    private boolean active;
 
 
     public Long getId() {
@@ -45,5 +46,11 @@ public class UserResponseDTO {
         this.created_at = created_at;
     }
 
+    public boolean isActive() {
+        return active;
+    }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
