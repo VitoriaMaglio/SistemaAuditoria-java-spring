@@ -1,6 +1,6 @@
 # SistemaAuditoria-java-spring
 
-🛡️ ## Sistema de Auditoria e Versionamento de Dados
+🛡️  Sistema de Auditoria e Versionamento de Dados
 
 Este projeto é uma API REST desenvolvida em Java com Spring Boot, focada em auditoria, rastreabilidade e versionamento de dados, registrando todas as ações realizadas pelos usuários no sistema, como criação, alteração e exclusão lógica de entidades.
 
@@ -20,7 +20,7 @@ Gerar alertas automáticos para ações suspeitas
 
 Separar responsabilidades usando camadas bem definidas
 
-🗃️ ## Modelo de Dados (Entidades Principais)
+🗃️ Modelo de Dados (Entidades Principais)
 
 User -> executa as ações
 
@@ -32,7 +32,7 @@ VersionedEntity -> estado da entidade auditada
 
 Alert -> consequência de um log suspeito
 
-🧱 ## Arquitetura
+🧱 Arquitetura
 
 O projeto segue uma arquitetura em camadas:
 
@@ -41,7 +41,7 @@ controller  →  service  →  repository  →  database
             audit / alert
 
 
-📦 ## Principais Camadas
+📦  Principais Camadas
 
 Controller: expõe endpoints REST
 
@@ -57,7 +57,7 @@ Security: configuração de segurança (Spring Security)
 
 Migration: versionamento do banco com Flyway
 
-🧱 ## Arquitetura
+🧱 Arquitetura
 
 O projeto segue uma arquitetura em camadas:
 
@@ -80,7 +80,7 @@ Security: configuração de segurança (Spring Security)
 
 Migration: versionamento do banco com Flyway
 
-🛠️ ## Tecnologias Utilizadas
+🛠️  Tecnologias Utilizadas
 
 Java 21
 
