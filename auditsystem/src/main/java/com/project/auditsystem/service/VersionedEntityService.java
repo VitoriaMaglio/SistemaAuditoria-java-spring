@@ -10,6 +10,7 @@ public class VersionedEntityService {
 
     public VersionedEntityService(VersionedEntityRepository versionedEntityRepository) {
         this.versionedEntityRepository = versionedEntityRepository;}
+
     public void createVersion(String entityName, Long entityId, String dataSnapshot) {
         VersionedEntity version = new VersionedEntity();
         version.setEntityName(entityName);

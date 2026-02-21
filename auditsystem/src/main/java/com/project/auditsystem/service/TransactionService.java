@@ -15,12 +15,14 @@ public class TransactionService {
     private final UserRepository userRepository;
     private final AuditLogService auditLogService;
     private final AlertService alertService;
+    private final VersionedEntityService versionedEntityService;
 
-    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, AuditLogService auditLogService, AlertService alertService) {
+    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService) {
         this.transactionRepository = transactionRepository;
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
         this.alertService = alertService;
+        this.versionedEntityService = versionedEntityService;
     }
 
     //CreateTransaction validar se existe user por email e se user está ativo
@@ -34,6 +36,7 @@ public class TransactionService {
         alertService.createAlert(user, transactionSaved);
         alertService.createAlertDes(user, transactionSaved);
         auditLogService.logAction("CREATED", "Transaction", transaction.getId(), null, "Transação criada", user);
+
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }
     //Relacionamentos só são definidos em métodos de create ou update, nunca em get
@@ -48,6 +51,7 @@ public class TransactionService {
 
         return TransactionMapper.toTransactionResponseDto(transaction);
     }
+
 }
 
 

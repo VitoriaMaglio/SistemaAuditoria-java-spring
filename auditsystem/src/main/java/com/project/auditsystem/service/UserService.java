@@ -4,7 +4,10 @@ import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
+import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.stereotype.Service;
+
+import javax.naming.ldap.PagedResultsControl;
 
 /**
  * Classe que contém lógica de negócio de um usuário do sistema.
@@ -18,11 +21,16 @@ public class UserService {
     private final UserRepository userRepository;
     private final AuditLogService auditLogService;
     private final AlertService alertService;
+    private final VersionedEntityService versionedEntityService;
+    private final UserSnapshotBuilder userSnapshotBuilder;
 
-    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService) {
+
+    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder) {
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
         this.alertService = alertService;
+        this.versionedEntityService = versionedEntityService;
+        this.userSnapshotBuilder = userSnapshotBuilder;
     }
 
     //Método para cadastro de um usuário no sistema
@@ -53,9 +61,26 @@ public class UserService {
         if (!user.getActive()){
             throw new RuntimeException("Usuário inativo não pode ser alterado");
         }
+
+        String snapshot = userSnapshotBuilder.build(user);
+
+        versionedEntityService.createVersion(
+                "User",
+                user.getId(),
+                snapshot
+        );
+
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         User updatedUser = userRepository.save(user);
+        auditLogService.logAction(
+                "UPDATED",
+                "User",
+                updatedUser.getId(),
+                snapshot,
+                userSnapshotBuilder.build(updatedUser),
+                user
+        );
         return UserMapper.toUserResponseDto(updatedUser);
     }
     public void deleteUser(Long id){
