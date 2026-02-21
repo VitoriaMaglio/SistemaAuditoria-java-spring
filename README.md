@@ -57,28 +57,6 @@ Security: configuração de segurança (Spring Security)
 
 Migration: versionamento do banco com Flyway
 
-🧱 Arquitetura
-
-O projeto segue uma arquitetura em camadas:
-
-controller  →  service  →  repository  →  database
-                ↓
-            audit / alert
-📦 Principais Camadas
-
-Controller: expõe endpoints REST
-
-Service: contém a lógica de negócio
-
-Repository: acesso a dados via Spring Data JPA
-
-DTOs: comunicação entre API e cliente
-
-Mapper: conversão entre entidades e DTOs
-
-Security: configuração de segurança (Spring Security)
-
-Migration: versionamento do banco com Flyway
 
 🛠️  Tecnologias Utilizadas
 
