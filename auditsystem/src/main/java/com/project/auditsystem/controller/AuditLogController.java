@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.swing.event.ListDataEvent;
 import java.util.List;
 
+/**
+ * Classe que representa requisições da entidade auditlog: busca de auditoria por entidade.
+ */
 @RestController
 @RequestMapping("/auditlog")
 public class AuditLogController {

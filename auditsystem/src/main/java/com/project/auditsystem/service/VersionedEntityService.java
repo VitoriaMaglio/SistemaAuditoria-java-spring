@@ -4,6 +4,9 @@ import com.project.auditsystem.repository.VersionedEntityRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+/**
+ * Service que contém a lógica de negócio para criação de estados de uma entidade
+ */
 @Service
 public class VersionedEntityService {
     private final VersionedEntityRepository versionedEntityRepository;

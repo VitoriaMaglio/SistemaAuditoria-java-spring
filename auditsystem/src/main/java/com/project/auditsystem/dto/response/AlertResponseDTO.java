@@ -1,12 +1,11 @@
 package com.project.auditsystem.dto.response;
 
-import com.project.auditsystem.entity.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigInteger;
 import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor

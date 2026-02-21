@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @Getter
 @Setter
+/**
+ * Representa resposta genérica para exceções.
+ */
 public class RestErrorMessage {
 
     private HttpStatus status;

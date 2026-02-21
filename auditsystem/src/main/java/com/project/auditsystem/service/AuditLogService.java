@@ -5,6 +5,9 @@ import com.project.auditsystem.repository.AuditLogRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+/**
+ * Service que contém a lógica de negócio para criação de auditoria das entidades do sistema.
+ */
 @Service
 public class AuditLogService {
     private final AuditLogRepository auditLogRepository;

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Classe que representa requisição de alertas : busca alerta por usuário.
+ */
 @RestController
 @RequestMapping("/alerts")
 public class AlertController {

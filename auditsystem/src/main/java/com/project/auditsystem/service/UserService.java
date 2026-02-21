@@ -11,20 +11,18 @@ import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.stereotype.Service;
 
 /**
- * Classe que contém lógica de negócio de um usuário do sistema.
+ * Service que contém lógica de negócio de um usuário do sistema.
  */
 @Service
 public class UserService {
     /**
      * Injeção de dependência para a camada repository de acesso ao banco.
      */
-
     private final UserRepository userRepository;
     private final AuditLogService auditLogService;
     private final AlertService alertService;
     private final VersionedEntityService versionedEntityService;
     private final UserSnapshotBuilder userSnapshotBuilder;
-
 
     public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder) {
         this.userRepository = userRepository;
@@ -70,18 +68,14 @@ public class UserService {
         if (!user.getActive()){
             throw new UserInactiveException();
         }
-
         String snapshot = userSnapshotBuilder.build(user);
-
         versionedEntityService.createVersion(
                 "User",
                 user.getId(),
                 snapshot
         );
-
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
-
         User updatedUser = userRepository.save(user);
         auditLogService.logAction(
                 "UPDATED",

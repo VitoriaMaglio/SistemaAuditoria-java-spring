@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller responsável por buscar versões de uma entidade.
+ */
 @RestController
 @RequestMapping("/versionedentity")
 public class VersionedEntityController {

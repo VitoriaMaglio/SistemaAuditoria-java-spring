@@ -3,9 +3,8 @@ package com.project.auditsystem.service.mapper;
 import com.project.auditsystem.dto.response.AlertResponseDTO;
 import com.project.auditsystem.entity.Alert;
 
+
 public class AlertMapper {
-
-
     //Método que converte entidade em response
     public AlertResponseDTO toAlertResponseDto(Alert alert){
         AlertResponseDTO alertResponseDTO = new AlertResponseDTO();

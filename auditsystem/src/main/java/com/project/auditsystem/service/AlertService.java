@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Service que representa lógica de negócio para criação de alertas no sistema."
+ */
 @Service
 public class AlertService {
     private final AlertRepository alertRepository;

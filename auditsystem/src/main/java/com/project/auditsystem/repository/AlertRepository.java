@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
+/**
+ * Camada de acesso ao banco com lógica
+ */
 @Repository
 public interface AlertRepository extends JpaRepository<Alert, Long> {
 //Método para gerar alert se usuário transação muito grande

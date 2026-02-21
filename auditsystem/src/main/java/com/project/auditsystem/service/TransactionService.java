@@ -11,6 +11,9 @@ import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.TransactionMapper;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service Service que contém a lógica de negócio para criação transações no sistema
+ */
 @Service
 public class TransactionService {
 
