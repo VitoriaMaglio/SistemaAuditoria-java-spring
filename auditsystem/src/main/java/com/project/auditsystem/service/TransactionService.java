@@ -32,6 +32,7 @@ public class TransactionService {
 
         Transaction transactionSaved = transactionRepository.save(transaction);
         alertService.createAlert(user, transactionSaved);
+        alertService.createAlertDes(user, transactionSaved);
         auditLogService.logAction("CREATED", "Transaction", transaction.getId(), null, "Transação criada", user);
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }

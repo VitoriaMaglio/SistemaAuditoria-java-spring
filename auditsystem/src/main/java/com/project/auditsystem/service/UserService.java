@@ -17,10 +17,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final AuditLogService auditLogService;
+    private final AlertService alertService;
 
-    public UserService(UserRepository userRepository, AuditLogService auditLogService) {
+    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService) {
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
+        this.alertService = alertService;
     }
 
     //Método para cadastro de um usuário no sistema
@@ -34,6 +36,7 @@ public class UserService {
             User savedUser = userRepository.save(user);
             //auditoria de user
             auditLogService.logAction("CREATE", "User", user.getId(), null, "Usuário criado",user);
+            alertService.createAlertUser(savedUser);
         //Retorna uma responsedto (seguro)
         return UserMapper.toUserResponseDto(savedUser);
     }
