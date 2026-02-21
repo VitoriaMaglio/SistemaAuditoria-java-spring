@@ -1,6 +1,10 @@
 package com.project.auditsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +14,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
+@NoArgsConstructor
+@Getter
+@Setter
 public class User {
 //BANCO DE DADOS
 // id identificar único gerado pelo banco
@@ -59,73 +66,5 @@ public class User {
     private Boolean active = true;
 
 
-    public User() {
-    }
-
-    public User(Long id, String name, String email, Instant createdAt, List<Transaction> transactions, String password, Boolean active) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.createdAt = createdAt;
-        this.transactions = transactions;
-        this.password = password;
-        this.active = active;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
 }
 

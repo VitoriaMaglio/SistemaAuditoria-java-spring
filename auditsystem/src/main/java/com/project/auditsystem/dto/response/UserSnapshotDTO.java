@@ -1,7 +1,15 @@
 package com.project.auditsystem.dto.response;
 
-import java.time.Instant;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.time.Instant;
+@AllArgsConstructor
+
+@Getter
+@Setter
 public class UserSnapshotDTO {
 
     private final Long id;
@@ -10,25 +18,6 @@ public class UserSnapshotDTO {
     private final Boolean active;
     private final Instant createdAt;
 
-    public UserSnapshotDTO(
-            Long id,
-            String name,
-            String email,
-            Boolean active,
-            Instant createdAt
-    ) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.active = active;
-        this.createdAt = createdAt;
-    }
-
-    public Long getId() { return id; }
-    public String getName() { return name; }
-    public String getEmail() { return email; }
-    public Boolean getActive() { return active; }
-    public Instant getCreatedAt() { return createdAt; }
 
     @Override
     public String toString() {
