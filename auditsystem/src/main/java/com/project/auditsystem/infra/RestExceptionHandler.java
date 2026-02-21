@@ -1,5 +1,7 @@
 package com.project.auditsystem.infra;
 
+import com.project.auditsystem.exception.RegisteredEmailException;
+import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     private ResponseEntity<RestErrorMessage> userNotFoundException(UserNotFoundException userNotFoundException){
        RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,userNotFoundException.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(threatResponse);
+    }
+
+    private ResponseEntity<RestErrorMessage> userInactiveException(UserInactiveException userInactiveException){
+        RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,userInactiveException.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(threatResponse);
+    }
+
+    private ResponseEntity<RestErrorMessage> RegisteredEmailException(RegisteredEmailException registeredEmailException){
+        RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,registeredEmailException.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(threatResponse);
     }
 }

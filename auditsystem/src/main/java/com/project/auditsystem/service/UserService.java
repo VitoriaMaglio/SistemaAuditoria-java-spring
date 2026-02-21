@@ -2,6 +2,10 @@ package com.project.auditsystem.service;
 import com.project.auditsystem.dto.request.UserRequestDTO;
 import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.User;
+import com.project.auditsystem.exception.RegisteredEmailException;
+import com.project.auditsystem.exception.RegisteredEmailException;
+import com.project.auditsystem.exception.UserInactiveException;
+import com.project.auditsystem.exception.UserInactiveException;
 import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
@@ -38,7 +42,7 @@ public class UserService {
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO){
         //lógica cadastro-> só cadastrar user se email nunca tiver sido registrado
         if (userRepository.existsByEmail(userRequestDTO.getEmail())){
-            throw new RuntimeException("Email já cadastrado");
+            throw new RegisteredEmailException();
         }
             //Para salvar no banco-> converte dto para entidade bruta e salva
             User user = UserMapper.toUserEntity(userRequestDTO);
@@ -60,7 +64,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
         if (!user.getActive()){
-            throw new RuntimeException("Usuário inativo não pode ser alterado");
+            throw new UserInactiveException();
         }
 
         String snapshot = userSnapshotBuilder.build(user);
@@ -88,7 +92,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
         if (!user.getActive()){
-            throw new RuntimeException("Usuário já está inativo.");
+            throw new UserInactiveException();
         }
         user.setActive(false);
         userRepository.save(user);
