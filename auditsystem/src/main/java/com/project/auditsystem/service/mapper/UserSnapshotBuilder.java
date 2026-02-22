@@ -17,7 +17,6 @@ import java.util.Map;
 public class UserSnapshotBuilder {
 
     public String build(User user) {
-
         UserSnapshotDTO snapshot = new UserSnapshotDTO(
                 user.getId(),
                 user.getName(),
@@ -26,5 +25,5 @@ public class UserSnapshotBuilder {
                 user.getCreatedAt()
 
         );
-        return snapshot.toString();
+        return snapshot.toJson();
     }}

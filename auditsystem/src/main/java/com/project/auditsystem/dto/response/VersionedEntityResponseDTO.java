@@ -19,6 +19,7 @@ public class VersionedEntityResponseDTO {
     private String dataSnapshot;
     private Instant createdAt;
     private String userName;
+    private Long userId;
 
 
 }

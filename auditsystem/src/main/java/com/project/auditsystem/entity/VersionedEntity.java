@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
 
@@ -44,8 +46,9 @@ public class VersionedEntity {
     @Version
     private Integer version;
     /**
-     * Representa o estao completo da entidade no sistema.
+     * Representa o estado completo da entidade no sistema.
      */
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "data_snapshot", columnDefinition = "jsonb", nullable = false)
     private String dataSnapshot;
 
@@ -57,11 +60,10 @@ public class VersionedEntity {
     private Instant createdAt;
 
     //Usuário responsável pela ação, lado forte com fk, "user_id" referencia a coluna da tbl user com pk
-    @ManyToOne
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+   private User user;
 
 
-    public void setUser(User id) {
-    }
 }

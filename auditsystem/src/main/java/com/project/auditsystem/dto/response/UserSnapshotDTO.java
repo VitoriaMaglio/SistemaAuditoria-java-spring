@@ -2,31 +2,33 @@ package com.project.auditsystem.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
-@AllArgsConstructor
 
-@Getter
-@Setter
-public class UserSnapshotDTO {
+import static jdk.internal.icu.impl.Utility.escape;
 
-    private final Long id;
-    private final String name;
-    private final String email;
-    private final Boolean active;
-    private final Instant createdAt;
+public record UserSnapshotDTO(Long id, String name, String email, Boolean active, Instant createdAt) {
 
+    public String toJson() {
+        return """
+            {
+              "id": %d,
+              "name": "%s",
+              "email": "%s",
+              "active": %b,
+              "createdAt": "%s"
+            }
+            """.formatted(
+                id,
+                escape(name),
+                escape(email),
+                active,
+                createdAt
+        );
 
-    @Override
-    public String toString() {
-        return "UserSnapshotDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", active=" + active +
-                ", createdAt=" + createdAt +
-                '}';
-    }
 }
+
+    private static String escape(String value) {
+        return value == null ? "" : value.replace("\"", "\\\"");
+    }}

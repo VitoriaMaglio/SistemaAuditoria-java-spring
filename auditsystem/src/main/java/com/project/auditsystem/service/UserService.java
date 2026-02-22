@@ -10,6 +10,7 @@ import com.project.auditsystem.repository.VersionedEntityRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service que contém lógica de negócio de um usuário do sistema.
@@ -64,7 +65,9 @@ public class UserService {
         userRepository.save(user);
         return UserMapper.toUserResponseDto(user);
     }
+
     //Método para atualizar dados de um user
+    @Transactional
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
         User user = userRepository.findByIdAndActiveTrue(id)
                 .orElseThrow(UserNotFoundException::new);
@@ -72,18 +75,16 @@ public class UserService {
             throw new UserInactiveException();
         }
         String snapshot = userSnapshotBuilder.build(user);
+
         Integer nextVersion = versionedEntityRepository
                 .findTopByEntityNameAndEntityIdOrderByVersionDesc("User", user.getId())
                 .map(v -> v.getVersion() + 1)
                 .orElse(1);
 
         versionedEntityService.createVersion(
-                "User",
-                user.getId(),
-                nextVersion,
-                snapshot,
-                user
-        );
+
+                user);
+
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         User updatedUser = userRepository.save(user);
