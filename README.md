@@ -1,77 +1,150 @@
-# SistemaAuditoria-java-spring
+🛡️ **Sistema de Auditoria e Versionamento de Dados**
 
-🛡️  Sistema de Auditoria e Versionamento de Dados
+API REST desenvolvida em Java com Spring Boot, focada em auditoria, rastreabilidade e versionamento de dados, registrando todas as ações realizadas pelos usuários no sistema — como criação, alteração e exclusão lógica de entidades.
 
-Este projeto é uma API REST desenvolvida em Java com Spring Boot, focada em auditoria, rastreabilidade e versionamento de dados, registrando todas as ações realizadas pelos usuários no sistema, como criação, alteração e exclusão lógica de entidades.
+O projeto tem como objetivo garantir transparência, segurança e histórico completo das operações, seguindo boas práticas adotadas em sistemas corporativos e financeiros.
 
-O objetivo é garantir transparência, segurança e histórico completo das operações, seguindo boas práticas utilizadas em sistemas corporativos e financeiros.
+🎯 **Problema Resolvido**
 
-🎯 ## Objetivos do Projeto
+Em sistemas corporativos, é comum a necessidade de:
 
-Registrar todas as ações realizadas pelos usuários
+- Rastrear alterações em dados sensíveis
 
-Garantir imutabilidade dos logs de auditoria
+- Investigar falhas, erros ou comportamentos indevidos
 
-Manter histórico de versões de dados (versionamento)
+- Atender requisitos de compliance e governança
 
-Permitir rastreabilidade: quem fez, o quê, quando e em qual entidade
+- Manter um histórico confiável de versões dos dados
 
-Gerar alertas automáticos para ações suspeitas
+Este projeto resolve esses problemas oferecendo:
 
-Separar responsabilidades usando camadas bem definidas
+✅ Versionamento de entidades
 
-🗃️ Modelo de Dados (Entidades Principais)
+✅ Auditoria automatizada
 
-User -> executa as ações
-
-Transaction -> ação do negócio
-
-AuditLog -> registro imutável 
-
-VersionedEntity -> estado da entidade auditada
-
-Alert -> consequência de um log suspeito
-
-🧱 Arquitetura
-
-O projeto segue uma arquitetura em camadas:
-
-controller  →  service  →  repository  →  database
-                ↓
-            audit / alert
+✅ Arquitetura extensível e desacoplada
 
 
-📦  Principais Camadas
+🗃️ **Modelo de Dados**
+| Entidade            | Responsabilidade                |
+| ------------------- | ------------------------------- |
+| **User**            | Executa as ações no sistema     |
+| **Transaction**     | Representa a ação de negócio    |
+| **AuditLog**        | Registro imutável dos eventos   |
+| **VersionedEntity** | Estado da entidade auditada     |
+| **Alert**           | Consequência de um log suspeito |
 
-Controller: expõe endpoints REST
+🧱 **Arquitetura**
 
-Service: contém a lógica de negócio
+O projeto segue uma arquitetura em camadas, garantindo organização, manutenibilidade e escalabilidade:
 
-Repository: acesso a dados via Spring Data JPA
+Controller → Exposição dos endpoints REST
 
-DTOs: comunicação entre API e cliente
+Service → Lógica de negócio
 
-Mapper: conversão entre entidades e DTOs
+Repository → Acesso a dados com Spring Data JPA
 
-Security: configuração de segurança (Spring Security)
+DTOs → Comunicação entre API e cliente
 
-Migration: versionamento do banco com Flyway
+Mapper → Conversão entre entidades e DTOs
 
+Exception → Tratamento global de erros
 
-🛠️  Tecnologias Utilizadas
+Security → Configuração de segurança (Spring Security)
 
-Java 21
+Migration → Versionamento do banco de dados com Flyway
 
-Spring Boot
+🔍 **Funcionamento da Auditoria**
 
-Spring Data JPA
+O sistema de auditoria é baseado em registro de eventos e versionamento do estado dos dados, separando claramente:
 
-Spring Security
+👤 Quem realizou a ação
 
-PostgreSQL
+⚙️ Qual ação ocorreu
 
-Flyway (Database Migration)
+🗂️ Como os dados estavam naquele momento
 
-Maven
+📌 **Fluxo de Funcionamento**
+-> Cadastro ou alteração de um usuário
 
-Postman (testes de API)
+A ação gera um registro na tabela AuditLog
+
+O evento é registrado com informações da operação (ex: criação, atualização)
+
+-> Cadastro ou alteração de uma transação
+
+Um novo registro é criado em AuditLog
+
+Cada evento é tratado de forma independente e rastreável
+
+-> Versionamento do estado dos dados
+
+O estado da entidade no momento da ação é persistido em VersionedEntity
+
+Cada registro representa um snapshot do dado, permitindo manter o histórico completo das alterações
+
+📂 **Responsabilidades das Estruturas**
+
+🧾 AuditLog
+
+Responsável por registrar o evento ocorrido no sistema.
+
+Armazena:
+
+Tipo de ação (CREATE, UPDATE, DELETE)
+
+Entidade afetada
+
+Identificador da entidade
+
+Data e hora do evento
+
+🗂️ VersionedEntity
+
+Responsável por armazenar os estados versionados dos dados.
+
+Permite:
+
+Reconstrução do histórico da entidade
+
+Análise da evolução dos dados ao longo do tempo
+
+Auditorias detalhadas e rastreáveis
+
+🧠 **Benefícios da Abordagem**
+
+Separação clara entre evento de auditoria e estado do dado
+
+Maior flexibilidade para evolução do sistema
+
+Compatibilidade com cenários corporativos e requisitos de compliance
+
+Histórico confiável, organizado e imutável
+
+🛠️ **Tecnologias Utilizadas**
+
+☕ Java 21
+
+🌱 Spring Boot
+
+🗄️ Spring Data JPA
+
+🔐 Spring Security
+
+🐘 PostgreSQL
+
+🔄 Flyway (Database Migration)
+
+🧪 JUnit
+
+🧪 Mockito
+
+📦 Maven
+
+🔎 Postman (testes de API)
+
+👩‍💻 **Autora**
+
+Vitória
+Estudante de Análise e Desenvolvimento de Sistemas
+Foco em desenvolvimento Back-end com Java e Spring
