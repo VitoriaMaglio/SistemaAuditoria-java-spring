@@ -4,6 +4,7 @@ import com.project.auditsystem.entity.VersionedEntity;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.repository.VersionedEntityRepository;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -14,13 +15,13 @@ import java.util.List;
  */
 @Service
 public class VersionedEntityService {
-    private final VersionedEntityRepository versionedEntityRepository;
-    private final UserSnapshotBuilder userSnapshotBuilder;
-    private final UserRepository userRepository;
-    public VersionedEntityService(VersionedEntityRepository versionedEntityRepository, UserSnapshotBuilder userSnapshotBuilder, UserRepository userRepository) {
-        this.versionedEntityRepository = versionedEntityRepository;
-        this.userSnapshotBuilder = userSnapshotBuilder;
-        this.userRepository = userRepository;
+    @Autowired
+    private  VersionedEntityRepository versionedEntityRepository;
+    @Autowired
+    private  UserSnapshotBuilder userSnapshotBuilder;
+    @Autowired
+    private  UserRepository userRepository;
+    public VersionedEntityService(){
     }
 
     public void createVersion(

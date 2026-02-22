@@ -4,6 +4,7 @@ import com.project.auditsystem.entity.Alert;
 import com.project.auditsystem.entity.Transaction;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.AlertRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,10 +14,10 @@ import java.util.List;
  */
 @Service
 public class AlertService {
-    private final AlertRepository alertRepository;
+    @Autowired
+    private  AlertRepository alertRepository;
 
-    public AlertService(AlertRepository alertRepository) {
-        this.alertRepository = alertRepository;}
+    public AlertService(){}
     private static final BigDecimal HIGH_VALUE_LIMIT = new BigDecimal("10000");
 
     public void createAlert(User user, Transaction transaction){

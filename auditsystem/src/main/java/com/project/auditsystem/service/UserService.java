@@ -9,6 +9,7 @@ import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.repository.VersionedEntityRepository;
 import com.project.auditsystem.service.mapper.UserMapper;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,21 +21,20 @@ public class UserService {
     /**
      * Injeção de dependência para a camada repository de acesso ao banco.
      */
-    private final UserRepository userRepository;
-    private final AuditLogService auditLogService;
-    private final AlertService alertService;
-    private final VersionedEntityService versionedEntityService;
-    private final UserSnapshotBuilder userSnapshotBuilder;
-    private final VersionedEntityRepository versionedEntityRepository;
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  AuditLogService auditLogService;
+    @Autowired
+    private  AlertService alertService;
+    @Autowired
+    private  VersionedEntityService versionedEntityService;
+    @Autowired
+    private  UserSnapshotBuilder userSnapshotBuilder;
+    @Autowired
+    private  VersionedEntityRepository versionedEntityRepository;
 
-    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder, VersionedEntityRepository versionedEntityRepository) {
-        this.userRepository = userRepository;
-        this.auditLogService = auditLogService;
-        this.alertService = alertService;
-        this.versionedEntityService = versionedEntityService;
-        this.userSnapshotBuilder = userSnapshotBuilder;
-        this.versionedEntityRepository = versionedEntityRepository;
-    }
+    public UserService(){}
 
     //Método para cadastro de um usuário no sistema
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO){

@@ -9,6 +9,7 @@ import com.project.auditsystem.exception.UserNotFoundException;
 import com.project.auditsystem.repository.TransactionRepository;
 import com.project.auditsystem.repository.UserRepository;
 import com.project.auditsystem.service.mapper.TransactionMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,17 +18,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransactionService {
 
-    private final TransactionRepository transactionRepository;
-    private final UserRepository userRepository;
-    private final AuditLogService auditLogService;
-    private final AlertService alertService;
+    @Autowired
+    private  TransactionRepository transactionRepository;
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  AuditLogService auditLogService;
+    @Autowired
+    private AlertService alertService;
 
 
-    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, AuditLogService auditLogService, AlertService alertService) {
-        this.transactionRepository = transactionRepository;
-        this.userRepository = userRepository;
-        this.auditLogService = auditLogService;
-        this.alertService = alertService;
+    public TransactionService(){
 
     }
 

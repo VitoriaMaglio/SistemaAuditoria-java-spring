@@ -2,6 +2,7 @@ package com.project.auditsystem.service;
 import com.project.auditsystem.entity.AuditLog;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.AuditLogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -10,10 +11,10 @@ import java.util.List;
  */
 @Service
 public class AuditLogService {
-    private final AuditLogRepository auditLogRepository;
+    @Autowired
+    private AuditLogRepository auditLogRepository;
 
-    public AuditLogService(AuditLogRepository auditLogRepository) {
-        this.auditLogRepository = auditLogRepository;}
+    public AuditLogService(){}
 
     //Registra uma ação no sistema
     public void logAction(String action, String entityName, Long entityId, String oldValue, String newValue, User user) {
