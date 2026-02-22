@@ -30,7 +30,6 @@ public class VersionedEntityService {
             throw new IllegalArgumentException("User não pode ser nulo e deve ter ID");
         }
 
-
         User managedUser = userRepository.findById(user.getId())
                 .orElseThrow(() -> new RuntimeException("User não encontrado"));
 

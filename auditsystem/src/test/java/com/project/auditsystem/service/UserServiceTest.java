@@ -47,7 +47,6 @@ class UserServiceTest {
     @Test
     @DisplayName("Should create user successfully" )
     void createUserCase1() {
-
         /// AAA
         //Arrange
         //DTO simula o que o controller enviaria
@@ -98,7 +97,7 @@ class UserServiceTest {
         //DTO simula o que o controller enviaria
         UserRequestDTO requestDTO = new UserRequestDTO("User","teste@email.com","Senah123");
 
-        //Simula que o emial ainda n existe
+        //Simula que o email existe
         when(userRepository.existsByEmail("teste@email.com"))
                 .thenReturn(true);
 

@@ -46,9 +46,7 @@ class TransactionServiceTest {
     @DisplayName("Should create transaction successfully")
     void createTransactionCase1() {
         //Arrange
-        //passar dados controller
-        //retorna entidade banco
-        //simular existencia
+
         User user = new User();
         String email = "user@email.com";
         user.setId(1L);
@@ -58,13 +56,11 @@ class TransactionServiceTest {
         transactionSaved.setId(10L);
         transactionSaved.setUser(user);
 
-
         when(userRepository.findByEmail(email))
                 .thenReturn(Optional.of(user));
 
         when(transactionRepository.save(any(Transaction.class)))
                 .thenReturn(transactionSaved);
-
 
         //act
         TransactionResponseDTO response =
@@ -82,12 +78,11 @@ class TransactionServiceTest {
         verify(auditLogService).logAction(
                 eq("CREATED"),
                 eq("Transaction"),
-                isNull(),                // ID ainda pode ser null
+                isNull(),
                 isNull(),
                 eq("Transação criada"),
                 eq(user)
         );
-
 
     }
 
