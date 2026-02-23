@@ -50,7 +50,6 @@ Mapper → Conversão entre entidades e DTOs
 
 Exception → Tratamento global de erros
 
-Security → Configuração de segurança (Spring Security)
 
 Migration → Versionamento do banco de dados com Flyway
 
@@ -128,8 +127,6 @@ Histórico confiável, organizado e imutável
 🌱 Spring Boot
 
 🗄️ Spring Data JPA
-
-🔐 Spring Security
 
 🐘 PostgreSQL
 
