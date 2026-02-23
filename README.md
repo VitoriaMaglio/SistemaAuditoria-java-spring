@@ -71,6 +71,7 @@ O sistema de auditoria é baseado em registro de eventos e versionamento do esta
 ---
 
 📌 **Fluxo de Funcionamento**
+
 -> Cadastro ou alteração de um usuário
 
 A ação gera um registro na tabela AuditLog
