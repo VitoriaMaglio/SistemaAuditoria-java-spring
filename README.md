@@ -115,10 +115,38 @@ Cada registro representa um snapshot do dado, permitindo manter o histórico com
 
 ---
 
+🚀 **Como Rodar**
+
+Pré-requisitos: Java 21, Maven, PostgreSQL
+
+Passos:
+
+Criar banco e configurar application.properties (URL, usuário e senha).
+
+Rodar o projeto:
+
+mvn clean install
+mvn spring-boot:run
+
+Testar endpoints no Postman:
+
+POST /users
+
+POST /transactions
+
+GET /auditlogs?entityName=Transaction&entityId=1
+
+GET /versioned-entities?entityName=Transaction&entityId=1
+
+Rodar testes:
+
+mvn test
+
 **Em desenvolvimento**
 Implementação futura de Spring Security (JWT)
 Implementação futura de Tests unitários
 
+--- 
 
 👩‍💻 **Autora**
 
