@@ -1,9 +1,9 @@
-🛡️ **Sistema de Auditoria e Versionamento de Dados**
+🛡️ # **Sistema de Auditoria e Versionamento de Dados**
 
 API REST desenvolvida em Java com Spring Boot, focada em auditoria, rastreabilidade e versionamento de dados, registrando todas as ações realizadas pelos usuários no sistema — como criação, alteração e exclusão lógica de entidades.
 
 O projeto tem como objetivo garantir transparência, segurança e histórico completo das operações, seguindo boas práticas adotadas em sistemas corporativos e financeiros.
-
+---
 🎯 **Problema Resolvido**
 
 Em sistemas corporativos, é comum a necessidade de:
@@ -23,7 +23,7 @@ Este projeto resolve esses problemas oferecendo:
 ✅ Auditoria automatizada
 
 ✅ Arquitetura extensível e desacoplada
-
+---
 
 🗃️ **Modelo de Dados**
 | Entidade            | Responsabilidade                |
@@ -50,9 +50,9 @@ Mapper → Conversão entre entidades e DTOs
 
 Exception → Tratamento global de erros
 
-
 Migration → Versionamento do banco de dados com Flyway
 
+---
 🔍 **Funcionamento da Auditoria**
 
 O sistema de auditoria é baseado em registro de eventos e versionamento do estado dos dados, separando claramente:
@@ -110,6 +110,7 @@ Análise da evolução dos dados ao longo do tempo
 
 Auditorias detalhadas e rastreáveis
 
+---
 🧠 **Benefícios da Abordagem**
 
 Separação clara entre evento de auditoria e estado do dado
