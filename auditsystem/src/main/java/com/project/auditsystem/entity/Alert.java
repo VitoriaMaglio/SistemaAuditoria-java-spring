@@ -1,5 +1,4 @@
 package com.project.auditsystem.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +7,6 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-
 /**
  * Classe que representa um alerta para quando houver ações suspeitas no sistema.
  */
@@ -17,7 +15,6 @@ import java.time.Instant;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class Alert {
     /**
      * Identificador único de alerta.
@@ -55,6 +52,5 @@ public class Alert {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
 
 }

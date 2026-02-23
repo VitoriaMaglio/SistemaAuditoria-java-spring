@@ -42,13 +42,11 @@ public class UserService {
         if (userRepository.existsByEmail(userRequestDTO.getEmail())){
             throw new RegisteredEmailException();
         }
-            //Para salvar no banco-> converte dto para entidade bruta e salva
             User user = UserMapper.toUserEntity(userRequestDTO);
             User savedUser = userRepository.save(user);
             //auditoria de user
             auditLogService.logAction("CREATE", "User", user.getId(), null, "Usuário criado",user);
             alertService.createAlertUser(savedUser);
-        //Retorna uma responsedto (seguro)
         return UserMapper.toUserResponseDto(savedUser);
     }
     //Método para get user por id
@@ -80,11 +78,7 @@ public class UserService {
                 .findTopByEntityNameAndEntityIdOrderByVersionDesc("User", user.getId())
                 .map(v -> v.getVersion() + 1)
                 .orElse(1);
-
-        versionedEntityService.createVersion(
-
-                user);
-
+        versionedEntityService.createVersion(user);
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         User updatedUser = userRepository.save(user);

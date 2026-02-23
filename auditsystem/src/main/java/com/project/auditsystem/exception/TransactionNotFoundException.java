@@ -6,7 +6,4 @@ public class TransactionNotFoundException extends RuntimeException{
         super("Transaction not found.");
     }
 
-    public TransactionNotFoundException(String message) {
-        super(message);
-    }
 }

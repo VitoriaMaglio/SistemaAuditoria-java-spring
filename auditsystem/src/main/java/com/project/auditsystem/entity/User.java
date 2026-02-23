@@ -18,9 +18,6 @@ import java.util.List;
 @Getter
 @Setter
 public class User {
-//BANCO DE DADOS
-// id identificar único gerado pelo banco
-// created_at precisão temporal com UTC, default current_timestamp é que se nenhum valor ofr preenchido nessa coluna, o banco preenche com a data e hora atual.
     /**
      * Identificador único de usuário.
      * Sequência gerada automaticamente pelo banco de dados.
@@ -64,7 +61,5 @@ public class User {
 
     @Column(nullable = false)
     private Boolean active = true;
-
-
 }
 

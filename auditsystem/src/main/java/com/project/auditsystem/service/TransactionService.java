@@ -27,12 +27,7 @@ public class TransactionService {
     @Autowired
     private AlertService alertService;
 
-
-    public TransactionService(){
-
-    }
-
-    //CreateTransaction validar se existe user por email e se user está ativo
+    public TransactionService(){}
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionRequestDTO, String email){
         User user = userRepository.findByEmail(email)
                 .filter(User::getActive)
@@ -47,20 +42,13 @@ public class TransactionService {
 
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }
-    //Relacionamentos só são definidos em métodos de create ou update, nunca em get
-    //Buscar uma transação -> verificar se existe um user ativo relacionado a esa ação
-    //Valido, realizar a busca da transação por id
+
     public TransactionResponseDTO getTransactionById (Long id, String email){
         User user = userRepository.findByEmailAndActiveTrue(email)
                 .orElseThrow(UserNotFoundException::new);
-        //adicionar lógica para se o usuário for inativo
         Transaction transaction = transactionRepository.findByIdAndUserEmail(id, email)
                 .orElseThrow(TransactionNotFoundException::new);
-
         return TransactionMapper.toTransactionResponseDto(transaction);
     }
 
 }
-
-
-

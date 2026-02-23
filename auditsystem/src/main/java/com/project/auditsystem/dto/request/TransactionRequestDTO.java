@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class TransactionRequestDTO {
-    //Aqui não pedir o user_id pois ele vem da autenticação, não do payload.
-    //Ele é associado do Spring Security
     @NotBlank
     private String description;
 

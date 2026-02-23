@@ -1,5 +1,4 @@
 package com.project.auditsystem.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,21 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
-
 @Entity
 @Table(name = "auditlogs")
 @NoArgsConstructor
 @Getter
 @Setter
 public class AuditLog {
-//BANCO DE DADOS
-//id identificador único gerado pelo banco
-//entity_name nome da entidade que sofreu uma ação
-//Text armazena textos longos registra o estado dos dados sem limite prático, pois pode alterar um campo ou cinco campos
-//created_at precisão do tempo em UTC
-//user_id indica quem fez a ação
-//fk primeiro declara a coluna, o tipo e not null, aplica a regra e nomeia a colunafk, indica a coluna da outra tabela do relacionamento, e faz referência para a outra tabela e sua pk.
-
     /**
      * Identificador único de auditlog.
      * Sequência gerada automaticamente pelo banco de dados.
@@ -72,7 +62,4 @@ public class AuditLog {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-
-
 }

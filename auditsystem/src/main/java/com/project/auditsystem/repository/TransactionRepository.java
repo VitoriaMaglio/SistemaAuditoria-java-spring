@@ -1,8 +1,6 @@
 package com.project.auditsystem.repository;
 
-import com.project.auditsystem.dto.response.UserResponseDTO;
 import com.project.auditsystem.entity.Transaction;
-import com.project.auditsystem.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface VersionedEntityRepository extends JpaRepository<VersionedEntity, Long> {
-//Histórico de versões de uma entidade
+
     List<VersionedEntity> findByEntityNameAndEntityIdOrderByVersionDesc(String entityName, Long entityId);
 
     Optional<VersionedEntity> findTopByEntityNameAndEntityIdOrderByVersionDesc(

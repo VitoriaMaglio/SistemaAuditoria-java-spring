@@ -12,7 +12,6 @@ import java.time.Instant;
 @Getter
 @Setter
 public class TransactionResponseDTO {
-    //Aqui tbm não retorna o user_id associado a transação, uma vez que estaria expondo identificadores internos
 
     private Long id;
     private String description;

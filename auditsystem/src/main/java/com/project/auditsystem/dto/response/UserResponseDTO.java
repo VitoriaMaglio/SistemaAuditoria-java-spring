@@ -1,7 +1,4 @@
 package com.project.auditsystem.dto.response;
-
-import com.project.auditsystem.dto.request.UserRequestDTO;
-import com.project.auditsystem.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

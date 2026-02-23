@@ -6,8 +6,6 @@ import com.project.auditsystem.repository.VersionedEntityRepository;
 import com.project.auditsystem.service.mapper.UserSnapshotBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.Instant;
 import java.util.List;
 
 /**
@@ -32,18 +30,15 @@ public class VersionedEntityService {
 
         User managedUser = userRepository.findById(user.getId())
                 .orElseThrow(() -> new RuntimeException("User não encontrado"));
-
         VersionedEntity ve = new VersionedEntity();
         ve.setEntityName("User");
         ve.setEntityId(managedUser.getId());
         ve.setVersion(1);
         ve.setDataSnapshot(userSnapshotBuilder.build(managedUser));
         ve.setUser(managedUser);
-
         versionedEntityRepository.save(ve);
     }
     public List<VersionedEntity> getVersions(String entityName, Long entityId) {
         return versionedEntityRepository.findByEntityNameAndEntityIdOrderByVersionDesc(entityName, entityId);
     }
-
 }

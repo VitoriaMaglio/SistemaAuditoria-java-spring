@@ -21,17 +21,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //User pode fazer post,get,delete(lógica de inativação) e put
-
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    //Criar um user
-    //Método tipo ResponseEntity parametrizado com UserResponseDTO pois o retorno do método é responsedto
-    //@RequestBody pois vai pedir inserção de dados do tipo dtoRequest
-    //chamar o service
-    //retornar status code
+
     @PostMapping
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO userRequestDto){
         UserResponseDTO userResponseDTO = userService.createUser(userRequestDto);

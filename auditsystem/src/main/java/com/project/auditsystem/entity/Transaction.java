@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-
 /**
  * Classe que representa uma transação financeira registrada no sistema e utilizada como base para auditoria.
  */
@@ -18,9 +17,6 @@ import java.time.Instant;
 @Getter
 @Setter
 public class Transaction {
-//BANCO DE DADOS
-// created_at precisão temporal com UTC, default current_timestamp é que se nenhum valor for preenchido nessa coluna, o banco preenche com a data e hora atual.
-//user_id relacionamento fk : declara a regra e nomeia a colunafk, declara a coluna com a fk, referencia a coluna e sua pk e define que nenhum usuário pode ser apagado se tiver transações associadas.
     /**
      * Identificador único de transação.
      * Sequência gerada automaticamente pelo banco de dados.
@@ -57,6 +53,4 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-
 }

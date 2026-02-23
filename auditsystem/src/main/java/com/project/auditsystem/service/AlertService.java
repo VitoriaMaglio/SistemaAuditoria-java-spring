@@ -61,7 +61,6 @@ public class AlertService {
         }
     }
 
-
     public List<Alert> findAlertsByUser(Long userId){
         return alertRepository.findByUserId(userId);
     }

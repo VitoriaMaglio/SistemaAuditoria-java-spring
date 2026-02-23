@@ -8,7 +8,6 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
-
 /**
  * Classe que guarda versões dos dados do sistema.
  */
@@ -18,8 +17,6 @@ import java.time.Instant;
 @Getter
 @Setter
 public class VersionedEntity {
-//BANCO DE DADOS
-//JSONB armazena json de forma binária e estruturada, permite consultas dentro do json
     /**
      * Identificador único de transação.
      * Sequence gerade automaticamente pelo banco de dados.
@@ -64,6 +61,4 @@ public class VersionedEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
    private User user;
-
-
 }

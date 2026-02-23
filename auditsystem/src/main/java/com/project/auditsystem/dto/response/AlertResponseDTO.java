@@ -1,6 +1,4 @@
 package com.project.auditsystem.dto.response;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +16,6 @@ public class AlertResponseDTO {
     private Instant created_at;
     private String entityName;
     private Long entityId;
-
     private String userName;
 
 

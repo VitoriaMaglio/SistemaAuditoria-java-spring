@@ -6,7 +6,5 @@ public class RegisteredEmailException extends RuntimeException {
         super("Email is already registered.");
     }
 
-    public RegisteredEmailException(String message) {
-        super(message);
-    }
+
 }

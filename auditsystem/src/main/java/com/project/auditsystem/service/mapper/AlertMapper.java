@@ -5,7 +5,6 @@ import com.project.auditsystem.entity.Alert;
 
 
 public class AlertMapper {
-    //Método que converte entidade em response
     public AlertResponseDTO toAlertResponseDto(Alert alert){
         AlertResponseDTO alertResponseDTO = new AlertResponseDTO();
         alertResponseDTO.setId(alert.getId());

@@ -30,5 +30,5 @@ public class AuditLogService {
     public List<AuditLog> findByEntity(String entityName, Long entityId){
         return auditLogRepository.findByEntityNameAndId(entityName,entityId);
     }
-    //AuditLog é chamado por user e transaction service para auditar as ações(gerar registros imutáveis)
+
 }
