@@ -1,4 +1,4 @@
-🛡️ # **Sistema de Auditoria e Versionamento de Dados**
+# Sistema de Auditoria e Versionamento de Dados
 
 API REST desenvolvida em Java com Spring Boot, focada em auditoria, rastreabilidade e versionamento de dados, registrando todas as ações realizadas pelos usuários no sistema — como criação, alteração e exclusão lógica de entidades.
 
