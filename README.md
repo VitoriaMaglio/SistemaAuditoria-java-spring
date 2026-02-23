@@ -36,6 +36,8 @@ Este projeto resolve esses problemas oferecendo:
 | **VersionedEntity** | Estado da entidade auditada     |
 | **Alert**           | Consequência de um log suspeito |
 
+---
+
 🧱 **Arquitetura**
 
 O projeto segue uma arquitetura em camadas, garantindo organização, manutenibilidade e escalabilidade:
@@ -66,6 +68,8 @@ O sistema de auditoria é baseado em registro de eventos e versionamento do esta
 
 🗂️ Como os dados estavam naquele momento
 
+---
+
 📌 **Fluxo de Funcionamento**
 -> Cadastro ou alteração de um usuário
 
@@ -85,45 +89,8 @@ O estado da entidade no momento da ação é persistido em VersionedEntity
 
 Cada registro representa um snapshot do dado, permitindo manter o histórico completo das alterações
 
-📂 **Responsabilidades das Estruturas**
-
-🧾 AuditLog
-
-Responsável por registrar o evento ocorrido no sistema.
-
-Armazena:
-
-Tipo de ação (CREATE, UPDATE, DELETE)
-
-Entidade afetada
-
-Identificador da entidade
-
-Data e hora do evento
-
-🗂️ VersionedEntity
-
-Responsável por armazenar os estados versionados dos dados.
-
-Permite:
-
-Reconstrução do histórico da entidade
-
-Análise da evolução dos dados ao longo do tempo
-
-Auditorias detalhadas e rastreáveis
 
 ---
-
-🧠 **Benefícios da Abordagem**
-
-Separação clara entre evento de auditoria e estado do dado
-
-Maior flexibilidade para evolução do sistema
-
-Compatibilidade com cenários corporativos e requisitos de compliance
-
-Histórico confiável, organizado e imutável
 
 🛠️ **Tecnologias Utilizadas**
 
@@ -144,6 +111,13 @@ Histórico confiável, organizado e imutável
 📦 Maven
 
 🔎 Postman (testes de API)
+
+---
+
+**Em desenvolvimento**
+Implementação futura de Spring Security (JWT)
+Implementação futura de Tests unitários
+
 
 👩‍💻 **Autora**
 
