@@ -14,7 +14,7 @@ public class VersionedEntityMapper {
         versionedEntityResponseDTO.setVersion(versionedEntity.getVersion());
         versionedEntityResponseDTO.setDataSnapshot(versionedEntity.getDataSnapshot());
         versionedEntityResponseDTO.setCreatedAt(versionedEntity.getCreatedAt());
-        versionedEntityResponseDTO.setUserId(versionedEntity.getUser().getId());
+
         return versionedEntityResponseDTO;
     }
 }

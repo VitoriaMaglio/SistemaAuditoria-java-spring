@@ -26,15 +26,16 @@ public class TransactionController {
     //Método para cadastro de uma transação
     @PostMapping
     public ResponseEntity<TransactionResponseDTO> createTransaction(@RequestBody TransactionRequestDTO transactionRequestDTO){
-        String emailUserLogado = "vitoria.maglio@email.com";//depois vem da autenticação jwt
-        TransactionResponseDTO transactionResponseDTO = transactionService.createTransaction(transactionRequestDTO, emailUserLogado);
-        return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.createTransaction(transactionRequestDTO, emailUserLogado));
+        //String emailUserLogado = "felipemaglio@gmail.com"; -> DTO ->depois vem da autenticação jwt
+        TransactionResponseDTO transactionResponseDTO = transactionService.createTransaction(transactionRequestDTO, transactionRequestDTO.getEmail());
+        return ResponseEntity.status(HttpStatus.CREATED).body(transactionResponseDTO);
     }
 
     //Método para busca de transação
     @GetMapping("/{id}")
-    public ResponseEntity<TransactionResponseDTO> getTransactionById (@PathVariable Long id, @RequestParam String email){
-        TransactionResponseDTO transactionResponseDTO = transactionService.getTransactionById(id, email);
+    public ResponseEntity<TransactionResponseDTO> getTransactionById (@PathVariable Long id){
+        //String email = "felipemaglio@gmail.com";
+        TransactionResponseDTO transactionResponseDTO = transactionService.getTransactionById(id);
         return ResponseEntity.ok(transactionResponseDTO);
 
     }

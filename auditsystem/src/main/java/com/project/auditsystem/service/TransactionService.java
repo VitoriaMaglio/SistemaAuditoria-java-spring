@@ -30,8 +30,11 @@ public class TransactionService {
     public TransactionService(){}
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionRequestDTO, String email){
         User user = userRepository.findByEmail(email)
-                .filter(User::getActive)
-                .orElseThrow(UserInactiveException::new);
+                .orElseThrow(UserNotFoundException::new);
+
+        if (!user.getActive()) {
+            throw new UserInactiveException();
+        }
         Transaction transaction = TransactionMapper.toTransactionEntity(transactionRequestDTO);
         transaction.setUser(user);//IMPORTANTE -> atribuindo a transação ao user por conta do relacionamento
 
@@ -43,10 +46,10 @@ public class TransactionService {
         return TransactionMapper.toTransactionResponseDto(transactionSaved);
         }
 
-    public TransactionResponseDTO getTransactionById (Long id, String email){
-        User user = userRepository.findByEmailAndActiveTrue(email)
+    public TransactionResponseDTO getTransactionById (Long id){
+        User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
-        Transaction transaction = transactionRepository.findByIdAndUserEmail(id, email)
+        Transaction transaction = transactionRepository.findById(id)
                 .orElseThrow(TransactionNotFoundException::new);
         return TransactionMapper.toTransactionResponseDto(transaction);
     }

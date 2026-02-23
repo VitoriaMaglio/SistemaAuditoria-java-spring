@@ -14,7 +14,6 @@ public class AuditLogMapper {
         auditLogResponseDTO.setOldValue(auditLog.getOldValue());
         auditLogResponseDTO.setNewValue(auditLog.getNewValue());
         auditLogResponseDTO.setCreatedAt(auditLog.getCreatedAt());
-        auditLogResponseDTO.setUserName(auditLog.getUser().getName());
         return auditLogResponseDTO;
     }
 }

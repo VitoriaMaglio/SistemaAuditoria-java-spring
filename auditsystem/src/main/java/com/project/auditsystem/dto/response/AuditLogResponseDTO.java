@@ -19,7 +19,7 @@ public class AuditLogResponseDTO {
     private String oldValue;
     private String newValue;
     private Instant createdAt;
-    private String userName;
+
 
 
 }

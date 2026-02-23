@@ -29,7 +29,6 @@ public class AlertService {
             alert.setEntityName("Transaction");
             alert.setEntityId(transaction.getId());
             alert.setUser(user);
-
             alertRepository.save(alert);
         }
     }

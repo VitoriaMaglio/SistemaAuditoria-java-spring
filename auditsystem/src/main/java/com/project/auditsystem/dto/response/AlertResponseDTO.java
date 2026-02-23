@@ -16,7 +16,7 @@ public class AlertResponseDTO {
     private Instant created_at;
     private String entityName;
     private Long entityId;
-    private String userName;
+
 
 
 }

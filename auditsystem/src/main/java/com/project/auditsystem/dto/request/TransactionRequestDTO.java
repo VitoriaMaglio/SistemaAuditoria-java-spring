@@ -19,5 +19,8 @@ public class TransactionRequestDTO {
     @Positive
     private BigDecimal amount;
 
+    @NotBlank
+    private String email;
+
 
 }
