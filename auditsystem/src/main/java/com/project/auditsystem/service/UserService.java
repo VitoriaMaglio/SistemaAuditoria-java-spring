@@ -76,9 +76,6 @@ public class UserService {
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
         User user = userRepository.findByIdAndActiveTrue(id)
                 .orElseThrow(UserNotFoundException::new);
-        if (!user.getActive()){
-            throw new UserInactiveException();
-        }
         String snapshot = userSnapshotBuilder.build(user);
 
         Integer nextVersion = versionedEntityRepository
@@ -100,11 +97,8 @@ public class UserService {
         return UserMapper.toUserResponseDto(updatedUser);
     }
     public void deleteUser(Long id){
-        User user = userRepository.findById(id)
+        User user = userRepository.findByIdAndActiveTrue(id)
                 .orElseThrow(UserNotFoundException::new);
-        if (!user.getActive()){
-            throw new UserInactiveException();
-        }
         user.setActive(false);
         userRepository.save(user);
     }
