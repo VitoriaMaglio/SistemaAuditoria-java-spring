@@ -1,10 +1,11 @@
 package com.project.auditsystem.service;
 
+import com.project.auditsystem.dto.response.AlertResponseDTO;
 import com.project.auditsystem.entity.Alert;
 import com.project.auditsystem.entity.Transaction;
 import com.project.auditsystem.entity.User;
 import com.project.auditsystem.repository.AlertRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.auditsystem.service.mapper.AlertMapper;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
@@ -62,7 +63,8 @@ public class AlertService {
         }
     }
 
-    public List<Alert> findAlertsByUser(Long userId){
-        return alertRepository.findByUserId(userId);
+    public List<AlertResponseDTO> findAlertsByUser(Long userId){
+        List<Alert> alerts = alertRepository.findByUserId(userId);
+        return AlertMapper.toResponseDTOList(alerts);
     }
 }

@@ -3,15 +3,24 @@ package com.project.auditsystem.service.mapper;
 import com.project.auditsystem.dto.response.AlertResponseDTO;
 import com.project.auditsystem.entity.Alert;
 
+import java.util.List;
+
 
 public class AlertMapper {
-    public AlertResponseDTO toAlertResponseDto(Alert alert){
-        AlertResponseDTO alertResponseDTO = new AlertResponseDTO();
-        alertResponseDTO.setId(alert.getId());
-        alertResponseDTO.setDescription(alert.getDescription());
-        alertResponseDTO.setCreated_at(alert.getCreatedAt());
-        alertResponseDTO.setEntityName(alert.getEntityName());
-        alertResponseDTO.setEntityId(alert.getEntityId());
-        return alertResponseDTO;
+    public static AlertResponseDTO toAlertResponseDto(Alert alert){
+        return new AlertResponseDTO(
+                alert.getId(),
+                alert.getDescription(),
+                alert.getCreatedAt(),
+                alert.getEntityName(),
+                alert.getEntityId()
+
+        );
+    }
+
+    public static List<AlertResponseDTO> toResponseDTOList(List<Alert> alerts) {
+        return alerts.stream()
+                .map(AlertMapper::toAlertResponseDto)
+                .toList();
     }
 }

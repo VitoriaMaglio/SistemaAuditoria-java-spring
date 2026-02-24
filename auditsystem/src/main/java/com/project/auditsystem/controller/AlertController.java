@@ -26,18 +26,13 @@ public class AlertController {
         this.alertService = alertService;
     }
 
+
+    // Refatoração: removida a conversão de entidade para DTO do controller.
+    // O service agora retorna os DTOs prontos usando Mapper,
+    // mantendo o controller focado apenas em responsabilidade HTTP.
     @GetMapping("/users/{userId}")
     public ResponseEntity<List<AlertResponseDTO>> getAlertsByUser(@PathVariable Long userId){
-        List<Alert> alerts = alertService.findAlertsByUser(userId);
-        List<AlertResponseDTO> dto = alerts.stream()
-                .map(a -> new AlertResponseDTO(
-                        a.getId(),
-                        a.getDescription(),
-                        a.getCreatedAt(),
-                        a.getEntityName(),
-                        a.getEntityId()
-                ))
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(dto);
+        List<AlertResponseDTO> alertsDto = alertService.findAlertsByUser(userId);
+        return ResponseEntity.ok(alertsDto);
     }
 }
