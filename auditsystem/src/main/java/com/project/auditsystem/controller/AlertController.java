@@ -19,8 +19,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/alerts")
 public class AlertController {
-    @Autowired
-    private AlertService alertService;
+
+    private final AlertService alertService;
+
+    public AlertController(AlertService alertService) {
+        this.alertService = alertService;
+    }
 
     @GetMapping("/users/{userId}")
     public ResponseEntity<List<AlertResponseDTO>> getAlertsByUser(@PathVariable Long userId){

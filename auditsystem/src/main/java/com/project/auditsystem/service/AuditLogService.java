@@ -11,10 +11,12 @@ import java.util.List;
  */
 @Service
 public class AuditLogService {
-    @Autowired
-    private AuditLogRepository auditLogRepository;
 
-    public AuditLogService(){}
+    private final AuditLogRepository auditLogRepository;
+
+    public AuditLogService(AuditLogRepository auditLogRepository){
+        this.auditLogRepository = auditLogRepository;
+    }
 
     //Registra uma ação no sistema
     public void logAction(String action, String entityName, Long entityId, String oldValue, String newValue, User user) {

@@ -21,20 +21,27 @@ public class UserService {
     /**
      * Injeção de dependência para a camada repository de acesso ao banco.
      */
-    @Autowired
-    private  UserRepository userRepository;
-    @Autowired
-    private  AuditLogService auditLogService;
-    @Autowired
-    private  AlertService alertService;
-    @Autowired
-    private  VersionedEntityService versionedEntityService;
-    @Autowired
-    private  UserSnapshotBuilder userSnapshotBuilder;
-    @Autowired
-    private  VersionedEntityRepository versionedEntityRepository;
 
-    public UserService(){}
+    private final UserRepository userRepository;
+
+    private final AuditLogService auditLogService;
+
+    private final AlertService alertService;
+
+    private final VersionedEntityService versionedEntityService;
+
+    private final UserSnapshotBuilder userSnapshotBuilder;
+
+    private final VersionedEntityRepository versionedEntityRepository;
+
+    public UserService(UserRepository userRepository, AuditLogService auditLogService, AlertService alertService, VersionedEntityService versionedEntityService, UserSnapshotBuilder userSnapshotBuilder, VersionedEntityRepository versionedEntityRepository){
+        this.userRepository = userRepository;
+        this.auditLogService = auditLogService;
+        this.alertService = alertService;
+        this.versionedEntityService = versionedEntityService;
+        this.userSnapshotBuilder = userSnapshotBuilder;
+        this.versionedEntityRepository = versionedEntityRepository;
+    }
 
     //Método para cadastro de um usuário no sistema
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO){

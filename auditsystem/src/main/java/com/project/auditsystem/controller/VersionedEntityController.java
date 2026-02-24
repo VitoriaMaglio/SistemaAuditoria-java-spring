@@ -22,14 +22,15 @@ import java.util.stream.Collectors;
 @RequestMapping("/versionedentity")
 public class VersionedEntityController {
 
-    @Autowired
-    private VersionedEntityService versionedEntityService;
 
-    @Autowired
-    private VersionedEntityRepository versionedEntityRepository;
+    private final VersionedEntityService versionedEntityService;
 
-    public VersionedEntityController(VersionedEntityService versionedEntityService) {
+
+    private final VersionedEntityRepository versionedEntityRepository;
+
+    public VersionedEntityController(VersionedEntityService versionedEntityService, VersionedEntityRepository versionedEntityRepository) {
         this.versionedEntityService = versionedEntityService;
+        this.versionedEntityRepository = versionedEntityRepository;
     }
 
     @GetMapping

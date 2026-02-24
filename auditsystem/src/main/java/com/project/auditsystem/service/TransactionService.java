@@ -18,16 +18,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransactionService {
 
-    @Autowired
-    private  TransactionRepository transactionRepository;
-    @Autowired
-    private  UserRepository userRepository;
-    @Autowired
-    private  AuditLogService auditLogService;
-    @Autowired
-    private AlertService alertService;
 
-    public TransactionService(){}
+    private final  TransactionRepository transactionRepository;
+
+    private final UserRepository userRepository;
+
+    private final AuditLogService auditLogService;
+
+    private final AlertService alertService;
+
+    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, AuditLogService auditLogService, AlertService alertService){
+        this.transactionRepository = transactionRepository;
+        this.userRepository = userRepository;
+        this.auditLogService = auditLogService;
+        this.alertService = alertService;
+    }
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionRequestDTO, String email){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(UserNotFoundException::new);

@@ -13,14 +13,20 @@ import java.util.List;
  */
 @Service
 public class VersionedEntityService {
-    @Autowired
-    private  VersionedEntityRepository versionedEntityRepository;
-    @Autowired
-    private  UserSnapshotBuilder userSnapshotBuilder;
-    @Autowired
-    private  UserRepository userRepository;
-    public VersionedEntityService(){
+
+    private final VersionedEntityRepository versionedEntityRepository;
+
+    private final UserSnapshotBuilder userSnapshotBuilder;
+
+    private final UserRepository userRepository;
+
+    public VersionedEntityService(VersionedEntityRepository versionedEntityRepository, UserSnapshotBuilder userSnapshotBuilder, UserRepository userRepository){
+        this.versionedEntityRepository = versionedEntityRepository;
+        this.userSnapshotBuilder = userSnapshotBuilder;
+        this.userRepository = userRepository;
     }
+
+
 
     public void createVersion(
             User user) {

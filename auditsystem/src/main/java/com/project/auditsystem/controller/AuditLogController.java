@@ -24,14 +24,15 @@ import java.util.stream.Collectors;
 @RequestMapping("/auditlog")
 public class AuditLogController {
 
-    @Autowired
-    private AuditLogService auditLogService;
 
-    @Autowired
-    private AuditLogRepository auditLogRepository;
+    private final AuditLogService auditLogService;
 
-    public AuditLogController(AuditLogService auditLogService) {
+
+    private final AuditLogRepository auditLogRepository;
+
+    public AuditLogController(AuditLogService auditLogService, AuditLogRepository auditLogRepository) {
         this.auditLogService = auditLogService;
+        this.auditLogRepository = auditLogRepository;
     }
 
     @GetMapping

@@ -14,10 +14,12 @@ import java.util.List;
  */
 @Service
 public class AlertService {
-    @Autowired
-    private  AlertRepository alertRepository;
 
-    public AlertService(){}
+    private final  AlertRepository alertRepository;
+
+    public AlertService(AlertRepository alertRepository){
+        this.alertRepository = alertRepository;
+    }
     private static final BigDecimal HIGH_VALUE_LIMIT = new BigDecimal("10000");
 
     public void createAlert(User user, Transaction transaction){
