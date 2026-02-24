@@ -11,21 +11,21 @@ public class UserMapper {
 
     public static User toUserEntity(UserRequestDTO dtoUser){
         User user = new User();
-        user.setName(dtoUser.getName());
-        user.setEmail(dtoUser.getEmail());
-        user.setPassword(dtoUser.getPassword());
+        user.setName(dtoUser.name());
+        user.setEmail(dtoUser.email());
+        user.setPassword(dtoUser.password());
         return user;
     }
 
     //Método que converte entidade para response
     public static UserResponseDTO toUserResponseDto(User user){
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-        userResponseDTO.setId(user.getId());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setCreated_at(user.getCreatedAt());
-        userResponseDTO.setActive(user.getActive());
-        return userResponseDTO;
+        return new UserResponseDTO(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getCreatedAt(),
+                user.getActive()
+        );
     }
 
 

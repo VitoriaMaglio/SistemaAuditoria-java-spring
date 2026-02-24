@@ -1,21 +1,9 @@
 package com.project.auditsystem.dto.response;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.time.Instant;
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-public class UserResponseDTO {
 
-    private Long id;
-    private String name;
-    private String email;
-    private Instant created_at;
-    private boolean active;
-
-
-}
+public record UserResponseDTO (
+     Long id,
+     String name,
+     String email,
+     Instant created_at,
+     boolean active){}

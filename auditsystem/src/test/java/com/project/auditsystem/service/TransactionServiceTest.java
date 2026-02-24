@@ -51,7 +51,7 @@ class TransactionServiceTest {
         String email = "user@email.com";
         user.setId(1L);
         user.setActive(true);
-        TransactionRequestDTO requestDTO = new TransactionRequestDTO("Descrição", new BigDecimal("2.00"));
+        TransactionRequestDTO requestDTO = new TransactionRequestDTO("Descrição", new BigDecimal("2.00"), email);
         Transaction transactionSaved = new Transaction();
         transactionSaved.setId(10L);
         transactionSaved.setUser(user);
@@ -101,9 +101,11 @@ class TransactionServiceTest {
         // Act + Assert
         assertThrows(
                 UserInactiveException.class,
-                () -> transactionService.createTransaction(
-                        new TransactionRequestDTO("Descrição", new BigDecimal("2.00")), email
-                )
+                () -> transactionService.createTransaction(new TransactionRequestDTO("Descrição",
+                        new BigDecimal("2.00"),
+                        email
+                ),
+                        email)
         );
 
         verify(userRepository).findByEmail(email);

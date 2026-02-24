@@ -10,7 +10,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Getter
 @Setter
-public class AuditLogResponseDTO {
+public record AuditLogResponseDTO {
 
     private Long id;
     private String action;

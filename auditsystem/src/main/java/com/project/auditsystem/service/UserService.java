@@ -46,7 +46,7 @@ public class UserService {
     //Método para cadastro de um usuário no sistema
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO){
         //lógica cadastro-> só cadastrar user se email nunca tiver sido registrado
-        if (userRepository.existsByEmail(userRequestDTO.getEmail())){
+        if (userRepository.existsByEmail(userRequestDTO.email())){
             throw new RegisteredEmailException();
         }
             User user = UserMapper.toUserEntity(userRequestDTO);
@@ -86,8 +86,8 @@ public class UserService {
                 .map(v -> v.getVersion() + 1)
                 .orElse(1);
         versionedEntityService.createVersion(user);
-        user.setName(dto.getName());
-        user.setEmail(dto.getEmail());
+        user.setName(dto.name());
+        user.setEmail(dto.email());
         User updatedUser = userRepository.save(user);
         auditLogService.logAction(
                 "UPDATED",

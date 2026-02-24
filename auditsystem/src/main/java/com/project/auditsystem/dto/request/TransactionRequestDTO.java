@@ -8,19 +8,14 @@ import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
 
-@AllArgsConstructor
-@Getter
-@Setter
-public class TransactionRequestDTO {
+
+public record TransactionRequestDTO (
     @NotBlank
-    private String description;
+    String description,
 
     @NotNull
     @Positive
-    private BigDecimal amount;
+    BigDecimal amount,
 
     @NotBlank
-    private String email;
-
-
-}
+    String email) {}
