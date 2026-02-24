@@ -1,9 +1,5 @@
-package com.project.auditsystem.infra;
+package com.project.auditsystem.exception;
 
-import com.project.auditsystem.exception.RegisteredEmailException;
-import com.project.auditsystem.exception.TransactionNotFoundException;
-import com.project.auditsystem.exception.UserInactiveException;
-import com.project.auditsystem.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

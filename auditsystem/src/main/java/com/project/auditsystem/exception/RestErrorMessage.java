@@ -1,4 +1,4 @@
-package com.project.auditsystem.infra;
+package com.project.auditsystem.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
