@@ -9,20 +9,20 @@ public class TransactionMapper {
     //Método que converte request para entidade transaction
     public static Transaction toTransactionEntity(TransactionRequestDTO transactionRequestDTO){
         Transaction transaction = new Transaction();
-        transaction.setDescription(transactionRequestDTO.getDescription());
-        transaction.setAmount(transactionRequestDTO.getAmount());
+        transaction.setDescription(transactionRequestDTO.description());
+        transaction.setAmount(transactionRequestDTO.amount());
         return transaction;
     }
 
     //Método que converte entidade para response
     public static TransactionResponseDTO toTransactionResponseDto(Transaction transaction) {
-        TransactionResponseDTO transactionResponsetDTO = new TransactionResponseDTO();
-        transactionResponsetDTO.setId(transaction.getId());
-        transactionResponsetDTO.setDescription(transaction.getDescription());
-        transactionResponsetDTO.setAmount(transaction.getAmount());
-        transactionResponsetDTO.setCreated_at(transaction.getCreatedAt());
-        transactionResponsetDTO.setUserName(transaction.getUser().getName());
-
-        return transactionResponsetDTO;
+        return new TransactionResponseDTO(
+                transaction.getId(),
+                transaction.getDescription(),
+                transaction.getAmount(),
+                transaction.getCreatedAt(),
+                transaction.getUser().getName()
+        );
     }
 }
+

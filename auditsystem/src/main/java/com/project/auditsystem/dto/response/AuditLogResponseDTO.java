@@ -6,20 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-public record AuditLogResponseDTO {
 
-    private Long id;
-    private String action;
-    private String entityName;
-    private Long entityId;
-    private String oldValue;
-    private String newValue;
-    private Instant createdAt;
+public record AuditLogResponseDTO (
 
-
-
-}
+     Long id,
+     String action,
+     String entityName,
+     Long entityId,
+     String oldValue,
+     String newValue,
+     Instant createdAt)
+{}

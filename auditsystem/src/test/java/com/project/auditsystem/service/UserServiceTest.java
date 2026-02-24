@@ -70,7 +70,7 @@ class UserServiceTest {
         //Garante que o método não retornou null
         assertNotNull(response);
         //Confirma que dado funcionou
-        assertEquals("teste@email.com", response.getEmail());
+        assertEquals("teste@email.com", response.email());
 
         verify(userRepository).existsByEmail("teste@email.com");
         verify(userRepository).save(any(User.class));

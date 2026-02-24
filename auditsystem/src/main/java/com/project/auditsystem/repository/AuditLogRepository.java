@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface AuditLogRepository extends JpaRepository<AuditLog, Long> {
         List<AuditLog> findByEntityNameAndId(String entityName, Long entityId);
-        List<AuditLog> findByUserId(Long userId);
+        //List<AuditLog> findByUserId(Long userId);
 
 
 }

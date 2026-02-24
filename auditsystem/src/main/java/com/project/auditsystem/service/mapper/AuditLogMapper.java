@@ -6,14 +6,14 @@ import com.project.auditsystem.entity.AuditLog;
 public class AuditLogMapper {
     //Método que converte entidade em response
     public AuditLogResponseDTO toAuditLogResponseDto(AuditLog auditLog){
-        AuditLogResponseDTO auditLogResponseDTO = new AuditLogResponseDTO();
-        auditLogResponseDTO.setId(auditLog.getId());
-        auditLogResponseDTO.setAction(auditLog.getAction());
-        auditLogResponseDTO.setEntityName(auditLog.getEntityName());
-        auditLogResponseDTO.setEntityId(auditLog.getEntityId());
-        auditLogResponseDTO.setOldValue(auditLog.getOldValue());
-        auditLogResponseDTO.setNewValue(auditLog.getNewValue());
-        auditLogResponseDTO.setCreatedAt(auditLog.getCreatedAt());
-        return auditLogResponseDTO;
+        return new AuditLogResponseDTO(
+                auditLog.getId(),
+                auditLog.getAction(),
+                auditLog.getEntityName(),
+                auditLog.getEntityId(),
+                auditLog.getOldValue(),
+                auditLog.getNewValue(),
+                auditLog.getCreatedAt()
+        );
     }
 }
